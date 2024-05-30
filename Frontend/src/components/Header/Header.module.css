@@ -49,3 +49,8 @@
   color: #4169e1;
 }
 
+.input {
+    padding:.5rem 1rem;
+    border-radius: .5rem;
+  }
+
