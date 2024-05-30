@@ -3,7 +3,7 @@
 const Registro = () => {
   return (
     <div>
-      <h2>REGISTRO</h2>
+      <h2>REGISTRATE LOCO!!!</h2>
     </div>
   )
 }
