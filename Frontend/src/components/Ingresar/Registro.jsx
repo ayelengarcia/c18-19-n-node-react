@@ -1,10 +1,15 @@
-// import styles from './Ingresar.module.css'
 import styles from './Ingresar.module.css'
 import { useForm} from "react-hook-form"
 import { NavLink } from 'react-router-dom';
+
+
 function IniciarSesion (){
-  const {register, handleSubmit} =  useForm();
-  const handleForm = (e)=> {e.preventDefault()}
+  const { register, handleSubmit } = useForm();
+  
+  const handleForm = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <div className={styles.container} >
       <div>
