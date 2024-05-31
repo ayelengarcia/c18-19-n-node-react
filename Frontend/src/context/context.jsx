@@ -7,15 +7,12 @@ const Context = createContext();
 export const ContextProvider = ({ children }) => {
   const [busqueda, setBusqueda] = useState('');
 
-
-
   const navigateTo = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     navigateTo('/Servicios');
   };
-
 
   const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
 

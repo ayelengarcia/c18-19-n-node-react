@@ -5,7 +5,6 @@ import Servicios from "./Servicios/Servicios.jsx"
 import Contacto from "./Contacto/Contacto.jsx"
 import ServicioDetail from "./Servicios/ServicioDetail.jsx"
 
-
   const Main = () => {
   
   return (
