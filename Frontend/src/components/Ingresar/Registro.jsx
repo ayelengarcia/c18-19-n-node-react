@@ -11,9 +11,7 @@ function IniciarSesion (){
   }
 
   return (
-    <div className={styles.container} >
       <div>
-      <h2>Registrarse</h2>
       <form onSubmit={handleForm} className={styles.form} >
         <input type="text" placeholder="Nombre" className={styles.standar}
         />
@@ -36,7 +34,6 @@ function IniciarSesion (){
         <NavLink to="/Iniciar-sesion">¿Ya tienes una cuenta?.</NavLink>
      
       </form>
-      </div>
       {/* <div className={styles.content_img}>
         <img src="https://rightpeoplegroup.com/wp-content/uploads/2022/11/software-production-team-2021-09-24-04-17-44-utc-min-scaled.jpg" alt="equipo desarrollando" className={styles.img} />
       </div> */}

@@ -25,7 +25,7 @@ const Header = () => {
           </NavLink>
         </ul>
 
-        <Link to="Iniciar-sesion">
+        <Link to="Ingresar">
           <button className={styles.btn}>Ingresar</button>
         </Link>
         
