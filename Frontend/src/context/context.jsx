@@ -13,7 +13,6 @@ export const ContextProvider = ({ children }) => {
     event.preventDefault();
     navigateTo('/Servicios');
   };
-
   const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
 
   useEffect(() => {

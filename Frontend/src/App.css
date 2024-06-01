@@ -28,3 +28,13 @@ h1, h2, h3, h4, h5{
 .div{
   background-color: antiquewhite;
 }
+.navlink {
+  color: #c0c0c0;
+  text-decoration: none;
+  list-style: none;
+  transition: color 0.5s ease;
+}
+.navlink:hover,.active{
+  color: #4169e1;
+  border-bottom: 1px solid #4169e1;
+}

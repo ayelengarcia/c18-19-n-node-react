@@ -55,7 +55,7 @@
     display: flex;
     flex-direction: column;
     max-width: 300px;
-    gap: 10px;
+    gap: 5px;
 }
 
 .standar{
