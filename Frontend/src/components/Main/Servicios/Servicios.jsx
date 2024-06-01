@@ -2,7 +2,7 @@ import styles from './Servicios.module.css'
 import ServicioCard from "./ServicioCard.jsx"
 import { useContext } from "react";
 import Context from '../../../context/context.jsx';
-import { Buscador } from '../../Buscador/Buscador.jsx';
+import { Buscador } from '../../Filtrado/Buscador.jsx';
 
 const Servicios = () => {
   const { serviciosFiltrados } = useContext(Context);
