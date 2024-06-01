@@ -1,5 +1,8 @@
 .container{
+  padding-top: 5rem;
   color: #c0c0c0;
   display: flex;
   justify-content: center;
+  height: 100%;
+  width: 100%;
 }
