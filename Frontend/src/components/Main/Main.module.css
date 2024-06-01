@@ -3,6 +3,6 @@
   color: #c0c0c0;
   display: flex;
   justify-content: center;
-  height: 100%;
+  height: max-content;
   width: 100%;
 }
