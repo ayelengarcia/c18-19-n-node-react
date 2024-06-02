@@ -5,36 +5,42 @@ import servicios from "../components/Main/Servicios/servicios.json";
 const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
-  const [busqueda, setBusqueda] = useState('');
-
+  const [busqueda, setBusqueda] = useState("");
+  const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
   const navigateTo = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigateTo('/Servicios');
+    navigateTo("/Servicios");
   };
 
-  const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
-
   useEffect(() => {
-    if (busqueda == '') {
+    if (busqueda == "") {
       setServiciosFiltrados(servicios);
     } else {
-      const filtro = servicios.filter(element => {
+      const filtro = servicios.filter((element) => {
         return (
-          element.titulo.toLowerCase().includes(busqueda.toLowerCase())
-          ||
-          element.descripcion.toLowerCase().includes(busqueda.toLowerCase()))
-      })
-      setServiciosFiltrados(filtro)
+          element.titulo.toLowerCase().includes(busqueda.toLowerCase()) ||
+          element.descripcion.toLowerCase().includes(busqueda.toLowerCase())
+        );
+      });
+      setServiciosFiltrados(filtro);
     }
   }, [busqueda]);
 
   return (
-    <Context.Provider value={{ busqueda, setBusqueda, handleSubmit, serviciosFiltrados, setServiciosFiltrados }}>
+    <Context.Provider
+      value={{
+        busqueda,
+        setBusqueda,
+        handleSubmit,
+        serviciosFiltrados,
+        setServiciosFiltrados,
+      }}
+    >
       {children}
     </Context.Provider>
-  )
-}
+  );
+};
 
 export default Context;

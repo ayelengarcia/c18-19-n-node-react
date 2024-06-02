@@ -8,13 +8,13 @@ const Iniciar_sesion = () => {
   }
 
   return (
-    <div>
+    <div style={{ width: '100%' }}>
           <form onSubmit={handleForm} className={styles.form} >
-            <input type="email" placeholder="Correo electronico" className={styles.standar} />
-            <input type="password" placeholder="Contraseña" className={styles.standar} />
+            <input type="email" placeholder="Correo electrónico*" className={styles.standar} />
+            <input type="password" placeholder="Contraseña*" className={styles.standar} />
             <button type="submit" className={styles.btn}>Ingresar</button>
+            <NavLink to="/Registro" className={styles.parrafo}>Olvidé mi contraseña</NavLink>
           </form>
-          <NavLink to="/Registro">Olvidé mi contraseña</NavLink>
     </div>
   )
 }
