@@ -1,0 +1,13 @@
+.input {
+  padding: .6rem 1rem;
+  border-radius: .5rem;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #313339;
+}
+
+.select{
+  padding: .5rem;
+  margin-left: 1rem;
+  border-radius: .5rem;
+}

@@ -1,0 +1,27 @@
+.container{
+  position: relative;
+  top: -5rem;
+  width: 100%;
+}
+
+.container_portada{
+  background-image: url("portada.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 550px;
+  height: 100%;
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title{
+  color: #ffff;
+  font-size: 4rem;
+  box-shadow: -2px 2px 2px rgba(24,37,170,0.12);
+}
+
