@@ -1,14 +1,17 @@
 const express = require('express')
+const passport = require('./auth/auth');
 const userRoutes = require('./routes/user.routes')
 const reservasRoutes = require('./routes/reservas.routes')
 const serviciosRoutes = require('./routes/servicios.routes')
 const authRoutes = require('./routes/auth.routes')
 const app = express()
 const mongoose = require('mongoose')
+require('dotenv').config();
 
 app.set('PORT', 3000)
 
 app.use(express.json())
+app.use(passport.initialize());
 
 app.use('/auth', authRoutes)
 app.use('/user', userRoutes)
