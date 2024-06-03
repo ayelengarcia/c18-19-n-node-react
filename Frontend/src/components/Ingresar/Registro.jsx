@@ -2,19 +2,31 @@ import styles from "./Ingresar.module.css";
 import { useForm } from "react-hook-form";
 
 function IniciarSesion() {
-  const {  register,  handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [registered, setRegistered] = useState(false);
 
-  const onSubmit = (data) => {
-    const { nombre, edad, email, telefono, direccion, password } = data;
-    console.log(nombre);
+  // Envíamos los datos del formulario al backend para el registro, y si el registro es exitoso, establece el estado registered en true para redirigir al usuario
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post("http://localhost:3000/auth/register", data);
+      setRegistered(true);
+    } catch (error) {
+      console.error("Error al registrar:", error.response.data);
+    }
   };
 
-  console.log("errors", errors);
+  // si registered es true, redirigir al Home ('/')
+  if (registered) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div style={{ width: '100%' }}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-
         <div className={styles.container_datos}>
           <input
             type="text"
@@ -22,7 +34,7 @@ function IniciarSesion() {
             className={styles.standar}
             {...register("nombre", {
               required: { value: true, message: "Nombre requerido" },
-              minLength: { value: 3, message: "Minimo tres digitos" },
+              minLength: { value: 3, message: "Mínimo tres dígitos" },
             })}
           />
           {errors.nombre && <p>{errors.nombre.message}</p>}
@@ -32,8 +44,8 @@ function IniciarSesion() {
             placeholder="Dirección*"
             className={styles.standar}
             {...register("direccion", {
-              required: { value: true, message: "Direccion requerida" },
-              minLength: { value: 3, message: "Minimo tres digitos" },
+              required: { value: true, message: "Dirección requerida" },
+              minLength: { value: 3, message: "Mínimo tres dígitos" },
             })}
           />
           {errors.direccion && <p>{errors.direccion.message}</p>}
@@ -46,25 +58,23 @@ function IniciarSesion() {
             className={styles.standar}
             {...register("edad", {
               required: { value: true, message: "Edad requerida" },
-              minLength: { value: 1, message: "Minimo un digito" },
-              maxLength: { value: 2, message: "Maximo dos digitos" },
+              minLength: { value: 1, message: "Mínimo un dígito" },
+              maxLength: { value: 2, message: "Máximo dos dígitos" },
             })}
           />
           {errors.edad && <p>{errors.edad.message}</p>}
-
 
           <input
             type="text"
             placeholder="Teléfono*"
             className={styles.standar}
             {...register("telefono", {
-              required: { value: true, message: "Telefono requerida" },
-              maxLength: { value: 20, message: "Maximo 20 digitos" },
+              required: { value: true, message: "Teléfono requerido" },
+              maxLength: { value: 20, message: "Máximo 20 dígitos" },
             })}
           />
           {errors.telefono && <p>{errors.telefono.message}</p>}
         </div>
-
 
         <input
           type="email"
@@ -85,11 +95,10 @@ function IniciarSesion() {
           placeholder="Contraseña*"
           className={styles.standar}
           {...register("password", {
-            required: { value: true, message: "Contraseña requerido" },
+            required: { value: true, message: "Contraseña requerida" },
             pattern: {
               value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-              message:
-                "caracteres entre 8 y 6, al menos un digito, mayuscula, minuscula",
+              message: "Caracteres entre 8 y 16, al menos un dígito, mayúscula, minúscula",
             },
           })}
         />
@@ -97,16 +106,16 @@ function IniciarSesion() {
 
         <div className={styles.container_check}>
           <input type="checkbox" {...register("check", { required: true })} />
-          <label htmlFor="terminos" className={styles.parrafo}>Acepto los terminos y condiciones</label>
+          <label htmlFor="terminos" className={styles.parrafo}>Acepto los términos y condiciones</label>
         </div>
 
         <button type="submit" className={styles.btn}>
           Crear cuenta
         </button>
 
+        <NavLink to="/IniciarSesion" className={styles.parrafo}>¿Ya tienes una cuenta? Inicia sesión aquí</NavLink>
       </form>
     </div>
-
   );
 }
 
