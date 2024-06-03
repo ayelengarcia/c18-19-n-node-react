@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
         auto: true,
     },
-    rol: { type: String, default: 'usuario' },
+    rol: { type: String, enum: ["usuario", "propietario", "admin"] , default: 'usuario'},
     nombre: { type: String, require: true },
     apellido: { type: String, require: true },
     edad: { type: Number, require:true },

@@ -1,8 +1,7 @@
-import React from 'react'
-import styles from './Header.module.css'
+import styles from './Buscador.module.css'
 import { useContext } from "react";
-import Context from '../../context/context';
-
+import Context from '../../context/context.jsx';
+import Filtro from './Filtro.jsx'
 export const Buscador = () => {
 
   const { busqueda, setBusqueda, handleSubmit } = useContext(Context);
@@ -16,10 +15,11 @@ export const Buscador = () => {
                 type="text"
                 name='busqueda'
                 autoComplete='off'
-                placeholder='Buscate algo wachin'
+                placeholder='Ingresa el nombre de la sede...'
                 value={busqueda}
                 onChange={event => setBusqueda(event.target.value)}
             />
+            <Filtro />
         </form>
     )
 }

@@ -4,6 +4,7 @@ import Inicio from "./Inicio/Inicio.jsx"
 import Servicios from "./Servicios/Servicios.jsx"
 import Contacto from "./Contacto/Contacto.jsx"
 import ServicioDetail from "./Servicios/ServicioDetail.jsx"
+import Galeria from './Galeria/Galeria.jsx'
 
   const Main = () => {
   
@@ -14,6 +15,7 @@ import ServicioDetail from "./Servicios/ServicioDetail.jsx"
         <Route path="/" element={<Inicio />} />
         <Route path='/servicios' element={<Servicios />} />
         <Route path='/servicios/:id' element={<ServicioDetail />} />
+        <Route path='/galeria' element={<Galeria />} />
         <Route path='/contacto' element={<Contacto />} />
 
         <Route path='/*' element={<Navigate to="/"/>} />

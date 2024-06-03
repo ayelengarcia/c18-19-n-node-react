@@ -4,7 +4,6 @@ import Main from './components/Main/Main.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import { ContextProvider } from './context/context.jsx'
 import Ingresar from "../src/components/Ingresar/Ingresar.jsx"
-// import Registro from "../src/components/Ingresar/Registro.jsx"
 import { Route, Routes } from "react-router-dom"
 
 const App = () => {
@@ -18,7 +17,6 @@ const App = () => {
             <Footer />
           </>} />
           <Route path='/Ingresar' element={<Ingresar />} />
-          {/* <Route path='/Registro' element={<Registro />} /> */}
         </Routes>
       
     </ContextProvider>
