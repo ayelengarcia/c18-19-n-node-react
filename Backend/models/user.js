@@ -2,6 +2,12 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const UserSchema = new mongoose.Schema({
+    nombre: { type: String, require: true },
+    apellido: { type: String, require: true },
+    edad: { type: Number, require:true },
+    email: { type: String, require: true, unique: true },
+    password: { type: String, require: true },
+    telefono: { type: Number, require: true, unique: true},
     usuarioId: {
         type: mongoose.Schema.Types.ObjectId,
         index: true,
@@ -11,12 +17,6 @@ const UserSchema = new mongoose.Schema({
     googleId: { type: String },
     facebookId: { type: String },
     rol: { type: String, enum: ["usuario", "propietario", "admin"] , default: 'usuario'},
-    nombre: { type: String, require: true },
-    apellido: { type: String, require: true },
-    edad: { type: Number, require:true },
-    email: { type: String, require: true, unique: true },
-    password: { type: String, require: true },
-    telefono: { type: Number, require: true, unique: true},
     listaReservas: { type: Array, default: []}
 })
 

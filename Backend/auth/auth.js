@@ -1,7 +1,10 @@
 const passport = require('passport')
-const localStrategy = require('passport-local').Strategy
 const User = require('../models/user')
 
+// Requerimientos para passport:
+const localStrategy = require('passport-local').Strategy
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 // Requerimientos para desp verificar el token:
 const JWTStrategy = require('passport-jwt').Strategy
 const ExtractJWT = require('passport-jwt').ExtractJwt
@@ -68,52 +71,56 @@ passport.use(new JWTStrategy({
 }
 ))
 
-// Estrategia Google
+// Estrategia de Google
 passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    clientID: 'GOOGLE_CLIENT_ID',
+    clientSecret: 'GOOGLE_CLIENT_SECRET',
     callbackURL: 'http://localhost:3000/auth/google/callback'
-}, async (token, tokenSecret, profile, done) => {
+}, async (accessToken, refreshToken, profile, done) => {
     try {
-        let user = await User.findOne({ googleId: profile.id });
+        const user = await User.findOne({ googleId: profile.id });
 
-        if (!user) {
-            user = new User({
-                googleId: profile.id,
-                nombre: profile.displayName,
-                email: profile.emails[0].value,
-            });
-            await user.save();
+        if (user) {
+            return done(null, user);
         }
 
-        return done(null, user);
-    } catch (err) {
-        return done(err, false);
+        const newUser = new User({
+            googleId: profile.id,
+            nombre: profile.displayName,
+            email: profile.emails[0].value
+        });
+
+        await newUser.save();
+        done(null, newUser);
+    } catch (error) {
+        done(error);
     }
 }));
 
-// Estrategia Facebook
+// Estrategia de Facebook
 passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    clientID: 'FACEBOOK_APP_ID',
+    clientSecret: 'FACEBOOK_APP_SECRET',
     callbackURL: 'http://localhost:3000/auth/facebook/callback',
     profileFields: ['id', 'displayName', 'photos', 'email']
-}, async (token, tokenSecret, profile, done) => {
+}, async (accessToken, refreshToken, profile, done) => {
     try {
-        let user = await User.findOne({ facebookId: profile.id });
+        const user = await User.findOne({ facebookId: profile.id });
 
-        if (!user) {
-            user = new User({
-                facebookId: profile.id,
-                nombre: profile.displayName,
-                email: profile.emails[0].value,
-            });
-            await user.save();
+        if (user) {
+            return done(null, user);
         }
 
-        return done(null, user);
-    } catch (err) {
-        return done(err, false);
+        const newUser = new User({
+            facebookId: profile.id,
+            nombre: profile.displayName,
+            email: profile.emails[0].value
+        });
+
+        await newUser.save();
+        done(null, newUser);
+    } catch (error) {
+        done(error);
     }
 }));
 

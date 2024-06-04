@@ -34,8 +34,9 @@ authRouter.post('/login', (req, res, next) => {
             if (loginErr) {
                 return res.status(500).json({ error: 'Falló el login' });
             }
-
-            const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, {
+            // Crear el token incluyendo el ID del usuario, para eso ASEGURARNOS DE CAPTURAR EL ID!!! (con lo que puse en body):
+            const body = { _id: user._id, email: user.email };
+            const token = jwt.sign({ user: body }, process.env.JWT_SECRET_KEY, {
                 expiresIn: '1h',
             });
             return res.status(200).json({ token });
