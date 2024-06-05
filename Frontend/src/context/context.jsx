@@ -7,6 +7,7 @@ export const ContextProvider = ({ children }) => {
   const [busqueda, setBusqueda] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   function handleSelectChange(event) {
     const selectedOption = event.target.value;
@@ -36,7 +37,7 @@ export const ContextProvider = ({ children }) => {
   }, [busqueda, selectedOption]);
 
   return (
-    <Context.Provider value={{ busqueda, setBusqueda, handleSubmit, serviciosFiltrados, setServiciosFiltrados, selectedOption, handleSelectChange }}>
+    <Context.Provider value={{ busqueda, setBusqueda, handleSubmit, serviciosFiltrados, setServiciosFiltrados, selectedOption, handleSelectChange, loggedIn, setLoggedIn }}>
       {children}
     </Context.Provider>
   );

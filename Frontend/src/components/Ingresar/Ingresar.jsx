@@ -5,11 +5,9 @@ import { useState, useEffect, useRef } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 import { FaApple } from "react-icons/fa";
-import axios from 'axios';
 
 function Ingresar() {
   const [login, setLogin] = useState(true);
-
   const loginRef = useRef(null);
 
   useEffect(() => {

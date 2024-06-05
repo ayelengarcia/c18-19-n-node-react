@@ -1,7 +1,10 @@
 import styles from "./Ingresar.module.css";
 import { useForm } from "react-hook-form";
+import { useNavigate, NavLink } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
-function IniciarSesion() {
+function Registro() {
   const {
     register,
     handleSubmit,
@@ -18,10 +21,11 @@ function IniciarSesion() {
       console.error("Error al registrar:", error.response.data);
     }
   };
+  const navigate = useNavigate();
 
   // si registered es true, redirigir al Home ('/')
   if (registered) {
-    return <Redirect to="/" />;
+    navigate('/');
   }
 
   return (
@@ -41,14 +45,14 @@ function IniciarSesion() {
 
           <input
             type="text"
-            placeholder="Dirección*"
+            placeholder="Apellido*"
             className={styles.standar}
-            {...register("direccion", {
-              required: { value: true, message: "Dirección requerida" },
+            {...register("apellido", {
+              required: { value: true, message: "Apellido requerido" },
               minLength: { value: 3, message: "Mínimo tres dígitos" },
             })}
           />
-          {errors.direccion && <p>{errors.direccion.message}</p>}
+          {errors.apellido && <p>{errors.apellido.message}</p>}
         </div>
 
         <div className={styles.container_datos}>
@@ -98,7 +102,7 @@ function IniciarSesion() {
             required: { value: true, message: "Contraseña requerida" },
             pattern: {
               value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-              message: "Caracteres entre 8 y 16, al menos un dígito, mayúscula, minúscula",
+              message: "Debe tener entre 8 y 16 caracteres, al menos una mayúscula y una minúscula",
             },
           })}
         />
@@ -109,7 +113,7 @@ function IniciarSesion() {
           <label htmlFor="terminos" className={styles.parrafo}>Acepto los términos y condiciones</label>
         </div>
 
-        <button type="submit" className={styles.btn}>
+        <button onClick={onSubmit} type="submit" className={styles.btn}>
           Crear cuenta
         </button>
 
@@ -119,4 +123,4 @@ function IniciarSesion() {
   );
 }
 
-export default IniciarSesion;
+export default Registro;
