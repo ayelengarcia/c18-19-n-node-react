@@ -6,7 +6,9 @@ const UserSchema = new mongoose.Schema({
     apellido: { type: String, require: true },
     edad: { type: Number, require:true },
     email: { type: String, require: true, unique: true },
-    password: { type: String, require: true },
+    password: { type: String 
+        // quito el atributo de requerido ya que las constraseñas de google y facebook no llegan al modelo
+        /*, require: true */ },
     telefono: { type: Number, require: true, unique: true},
     usuarioId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -14,7 +16,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
         auto: true,
     },
-    googleId: { type: String },
+    googleId: { type: String, default: "" },
     facebookId: { type: String },
     rol: { type: String, enum: ["usuario", "propietario", "admin"] , default: 'usuario'},
     listaReservas: { type: Array, default: []}
@@ -23,8 +25,12 @@ const UserSchema = new mongoose.Schema({
 // Método para encriptar contraseña (Hook previo a crear un usuario, para hashear la contraseña y formar un usuario más seguro):
 
 UserSchema.pre('save', async function (next) {
-    const hash = await bcrypt.hash(this.password, 10);
-    this.password = hash;
+    //modifico el hasheo para que no cree un conflicto con el login de google o facebook ya que estos objetos no tienen campo de contraseña
+    if (this.isModified('password') && this.password){
+        
+        const hash = await bcrypt.hash(this.password, 10);
+        this.password = hash;
+    }
     next()
 })
 
