@@ -123,8 +123,15 @@
 
 .container_check{
   display: flex;
-  margin-left: 20px;
+  margin-left: 10px;
   text-indent: 5px;
+}
+
+.msgError{
+  text-align: start;
+  font-size: .7rem;
+  margin-left: 10px;
+  color: #d67179;
 }
 
 @media (min-width: 400px) {

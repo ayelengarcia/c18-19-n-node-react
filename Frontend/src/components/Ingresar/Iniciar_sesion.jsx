@@ -1,13 +1,15 @@
 import styles from './Ingresar.module.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import Context from '../../context/context.jsx';
 
 const Iniciar_sesion = () => {
+  const { msgError, msgSuccess, loggedIn, setLoggedIn, navigate } = useContext(Context);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false); // estado para controlar la redirección
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,10 +19,12 @@ const Iniciar_sesion = () => {
       const { token } = response.data;
       localStorage.setItem('token', token);
       console.log('Iniciaste sesión')
+      msgSuccess("Sesión iniciada con éxito")
 
       setLoggedIn(true);
     } catch (error) {
       console.error('Error al iniciar sesión:', error.response.data);
+      msgError("Error al iniciar sesión. Registrese o vuelva a intentar")
     }
   };
   
@@ -50,6 +54,7 @@ const Iniciar_sesion = () => {
         <button type="submit" className={styles.btn}>Ingresar</button>
         <NavLink to="/Registro" className={styles.parrafo}>Olvidé mi contraseña</NavLink>
       </form>
+      <ToastContainer />
     </div>
   );
 };

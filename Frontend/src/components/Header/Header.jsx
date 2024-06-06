@@ -1,12 +1,11 @@
 import styles from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import Context from "../../context/context"
 
 const Header = () => {
-  const { loggedIn, setLoggedIn } = useContext(Context);
-  const navigate = useNavigate();
+  const { loggedIn, setLoggedIn, navigate } = useContext(Context);
+
   const handleLogout = () => {
     // Lógica para cerrar sesión
     localStorage.removeItem('token');
