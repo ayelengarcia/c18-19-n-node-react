@@ -48,21 +48,30 @@ authRouter.post('/login', (req, res, next) => {
 authRouter.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 authRouter.get('/google/callback', (req, res, next) => {
-    passport.authenticate('google', { session: false }, (err, user) => {
-        if (err || !user) {
-            return res.redirect('/login');
+    passport.authenticate('google', { session: false }, (err, user, info) => {
+        
+        if (err) {
+            console.log('Error en Google callback:', err);
+            return res.status(500).json({ error: 'Error en la autenticación con Google' });
+        }
+        if (!user) {
+            console.log('Usario no encontrado:', info);
+            return res.status(401).json({ error: 'Usuario no encontrado' });
         }
 
         req.login(user, { session: false }, (loginErr) => {
             if (loginErr) {
-                return res.redirect('/login');
+                return res.status(500).json({ error: 'Falló el login' });
             }
-
-            const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, {
+            // Crear el token incluyendo el ID del usuario, para eso ASEGURARNOS DE CAPTURAR EL ID!!! (con lo que puse en body):
+            const body = { _id: user._id, email: user.email };
+            const token = jwt.sign({ user: body }, process.env.JWT_SECRET_KEY, {
                 expiresIn: '1h',
             });
-
-            return res.redirect(`/?token=${token}`);
+            //res.status(200).json({ token });
+            
+            res.redirect('http://127.0.0.1:5173/');
+            
         });
     })(req, res, next);
 });
