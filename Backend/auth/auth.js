@@ -73,17 +73,29 @@ passport.use(new JWTStrategy({
 
 // Estrategia de Google
 passport.use(new GoogleStrategy({
-    clientID: 'GOOGLE_CLIENT_ID',
-    clientSecret: 'GOOGLE_CLIENT_SECRET',
+    clientID: process.env.GOOGLE_CLIENT_ID ,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: 'http://localhost:3000/auth/google/callback'
 }, async (accessToken, refreshToken, profile, done) => {
     try {
-        const user = await User.findOne({ googleId: profile.id });
-
+        //verifico que exista el usuario de google en la db
+        let user = await User.findOne({ googleId: profile.id });
+        //si ya existe continuo
         if (user) {
+            console.log('ya existe usuario de google: ', user.nombre)
+            
+            return done(null, user, { message: 'Ingresaste correctamente a tu OfiFlex!' })
+        }
+        //verifico si el usuario que se inteta registrar ya exite con su mail en la db
+        user = await User.findOne({ email: profile.emails[0].value });
+        //si ya existe actualizo el google id en la db
+        
+        if (user) {
+            user.googleId = profile.id;
+            await user.save();
             return done(null, user);
         }
-
+        //si no sucede ninguno de los 2 casos creo el usuario nuevo en la db
         const newUser = new User({
             googleId: profile.id,
             nombre: profile.displayName,
@@ -91,7 +103,7 @@ passport.use(new GoogleStrategy({
         });
 
         await newUser.save();
-        done(null, newUser);
+        return done(null, newUser);
     } catch (error) {
         done(error);
     }
