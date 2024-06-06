@@ -88,7 +88,7 @@ export const ContextProvider = ({ children }) => {
       theme: "light",
     });
   
-  //??
+  //ESTADO DE LA SESION
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
