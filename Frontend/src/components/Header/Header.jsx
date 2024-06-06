@@ -26,7 +26,7 @@ const Header = () => {
         </ul>
 
         <Link to="Ingresar">
-          <button className={styles.btn}>Ingresar</button>
+          <button className={styles.btn}>Iniciar sesión</button>
         </Link>
         
       </div>
