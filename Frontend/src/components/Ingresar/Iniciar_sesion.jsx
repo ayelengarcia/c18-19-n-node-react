@@ -1,12 +1,14 @@
 import styles from './Ingresar.module.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 import { NavLink, useNavigate } from "react-router-dom";
+import Context from '../../context/context';
 
 const Iniciar_sesion = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false); // estado para controlar la redirección
+  //traigo del Context el callback para setear el estado loggedIn
+  const { setLoggedIn } = useContext(Context);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -19,14 +21,12 @@ const Iniciar_sesion = () => {
       console.log('Iniciaste sesión')
 
       setLoggedIn(true);
+      //navego al inicio luego de loguear para no perder el estado y no se vuelva a setear en false
+      navigate("/");
     } catch (error) {
       console.error('Error al iniciar sesión:', error.response.data);
     }
   };
-  
-  if (loggedIn) {
-    navigate("/")
-  }
 
   return (
     <div style={{ width: '100%' }}>
