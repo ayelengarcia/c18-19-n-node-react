@@ -3,18 +3,21 @@
         "id":1,
         "nombre": "Oficinas",
         "cantidad": "Hasta 10 personas",
-        "img": "/img-oficinas.png"
+        "img": "/img-oficinas.png",
+        "categoria": "Oficinas"
     },
     {
         "id":2,
         "nombre": "Salas de reuniones",
         "cantidad": "Hasta 20 personas",
-        "img": "/img-salas.png"
+        "img": "/img-salas.png",
+        "categoria":"Salas"
     },
     {
         "id":3,
         "nombre": "Eventos",
         "cantidad": "Más de 20 personas",
-        "img": "/img-eventos.png"
+        "img": "/img-eventos.png",
+        "categoria": "Eventos"
     }
 ]

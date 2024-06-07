@@ -1,7 +1,8 @@
 import { createContext, useState, useEffect, useRef } from "react";
-import servicios from "../components/Main/Servicios/servicios.json";
+import servicios from "../data/servicios.json";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 
 const Context = createContext();
@@ -19,9 +20,27 @@ export const ContextProvider = ({ children }) => {
     const selectedOption = event.target.value;
     setSelectedOption(selectedOption);
   };
+  
   const handleSubmit = (event) => {
     event.preventDefault();
   };
+
+  //TRAIGO LA API DE SERVICIOS
+  // const [servicios, setServicios] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get("http://127.0.0.1:3000/servicios", {
+  //     headers: {
+  //       Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2NjI0ZjQ0NGI4NWMzOWYwZGY0NjE1NiIsImVtYWlsIjoiYXllbGVuZ2FyY2lhN0BnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzI2MjAxLCJleHAiOjE3MTc3Mjk4MDF9.6GnDUejak8BwXRqqT9PVxAOKiBR_Ax9xxZkz9BcdK8k",
+  //     },
+  //   })
+  //     .then(response => {
+  //       setServicios(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error("Error al obtener servicios:", error);
+  //     });
+  // }, []);
 
   useEffect(() => {
     let serviciosFiltradosTemp = servicios;
@@ -40,7 +59,7 @@ export const ContextProvider = ({ children }) => {
     }
 
     setServiciosFiltrados(serviciosFiltradosTemp);
-  }, [busqueda, selectedOption]);
+  }, [busqueda, selectedOption, servicios]);
 
 
   //LOGICA ESTILO ACTIVE COMPONENTE INGRESAR/INICIAR-SECION/REGISTRO
@@ -92,7 +111,7 @@ export const ContextProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <Context.Provider value={{ busqueda, setBusqueda, handleSubmit, serviciosFiltrados, setServiciosFiltrados, selectedOption, handleSelectChange, loggedIn, handleLogin, handleRegistro, login, setLogin, loginRef, setLoggedIn, msgError, msgSuccess, navigate }}>
+    <Context.Provider value={{ busqueda, setBusqueda, handleSubmit, serviciosFiltrados, setServiciosFiltrados, selectedOption, handleSelectChange, loggedIn, handleLogin, handleRegistro, login, setLogin, loginRef, setLoggedIn, msgError, msgSuccess, navigate, servicios }}>
       {children}
     </Context.Provider>
   );

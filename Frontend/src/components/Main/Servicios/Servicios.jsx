@@ -1,35 +1,23 @@
 import styles from './Servicios.module.css'
-import ServicioCard from "./ServicioCard.jsx"
-import { useContext } from "react";
-import Context from '../../../context/context.jsx';
-import { Buscador } from '../../Filtrado/Buscador.jsx';
+import { NavLink } from 'react-router-dom'
 
 const Servicios = () => {
-  const { serviciosFiltrados } = useContext(Context);
-
   return (
-    <div className={styles.container}>
-      <Buscador />
-      <div className={styles.container_servicios}>
-        {serviciosFiltrados.map((servicio) => {
-          return (
-            <ServicioCard
-              id={servicio.id}
-              key={servicio.id}
-              titulo={servicio.titulo}
-              descripcion={servicio.descripcion}
-              imagen={servicio.imagen}
-              disponibilidad={servicio.disponibilidad}
-              fecha={servicio.fecha}
-              hora={servicio.hora}
-              categoria={servicio.categoria}
-            />
-          );
-        })}
-      </div>
+    <div className={styles.container_servicios}>
+
+      <NavLink className={styles.navlink} to="/servicios/oficinas">
+        <h2>OFICINAS</h2>
+      </NavLink>
+
+      <NavLink className={styles.navlink} to="/servicios/salas">
+        <h2>SALAS</h2>
+      </NavLink>
+
+      <NavLink className={styles.navlink} to="/servicios/eventos">
+        <h2>EVENTOS</h2>
+      </NavLink>
 
     </div>
-   
   )
 }
 

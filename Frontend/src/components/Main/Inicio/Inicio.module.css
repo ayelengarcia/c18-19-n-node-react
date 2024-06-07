@@ -51,7 +51,6 @@
 
 .servicio_img{
   width: 100%;
-  max-width: 25rem;
   height: auto;
   margin-bottom: 1rem;
 }
@@ -92,19 +91,20 @@
   justify-content: center;
   align-items: center;
   color: #25282A;
-  padding: 0px 40px;
+  padding: 0px 3rem;
 }
 
 
 /* Reseñas */
 .resenas{
   gap: 5rem;
+  justify-content: space-between;
 }
 
 .resena_title{
   font-family: "Raleway", sans-serif;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 1.2rem;
 }
 
 .resena_img{
@@ -120,10 +120,9 @@
 
 .resenas_parrafo{
   text-align: start;
-  max-width: 23rem;
   margin: .8rem 0 1.5rem 0;
   font-weight: 200;
-  font-size: 15.5px;
+  font-size: 1.2rem;
 }
 
 .resenas_img_title{
@@ -131,5 +130,16 @@
 }
 
 .fecha, .reservar_button{
-  font-size: 18.5px;
+  font-size: 1.2rem;
+}
+
+.navlink{
+  color: #25282A;
+  text-decoration: none;
+  list-style: none;
+  transition: color 0.5s ease;
+}
+
+.navlink:hover{
+  color: #2c57da;
 }

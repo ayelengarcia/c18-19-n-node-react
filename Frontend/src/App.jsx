@@ -16,7 +16,7 @@ const App = () => {
             <Main />
             <Footer />
           </>} />
-          <Route path='/Ingresar' element={<Ingresar />} />
+          <Route path='/ingresar' element={<Ingresar />} />
         </Routes>
       
     </ContextProvider>

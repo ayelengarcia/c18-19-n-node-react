@@ -1,8 +1,8 @@
 import styles from './Inicio.module.css';
+import resenas from '../../../data/resenas.json';
+import servicios from '../../../data/serviciostype.json';
 import { Servicio } from './Servicio';
 import { Resena } from './Resena';
-import resenas from './resenas.json';
-import servicios from './servicios.json';
 import { NavLink } from 'react-router-dom'
 
 const Inicio = () => {
@@ -26,6 +26,7 @@ const Inicio = () => {
                 img={item.img}
                 name={item.nombre}
                 cantidad={item.cantidad}
+                categoria={item.categoria}
               />
             )
           })}

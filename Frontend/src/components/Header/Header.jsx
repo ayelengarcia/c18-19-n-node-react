@@ -17,7 +17,7 @@ const Header = () => {
     <div className={styles.container}>
       <div className={styles.container_menu}>
         <Link to="/">
-          <img className={styles.logo} src="/Logotipo.png" alt="logo" />
+          <img className={styles.logo} src="/logotipo.png" alt="logo" />
         </Link>
         <ul className={styles.container_ul}>
           <NavLink
@@ -28,19 +28,19 @@ const Header = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? `${styles.navlink} ${styles["navlink-active"]}` : styles.navlink)}
-            to="Servicios"
+            to="/servicios"
           >
             Servicios
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? `${styles.navlink} ${styles["navlink-active"]}` : styles.navlink)}
-            to="Galeria"
+            to="/galeria"
           >
             Galería
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? `${styles.navlink} ${styles["navlink-active"]}` : styles.navlink)}
-            to="Contacto"
+            to="/contacto"
           >
             Contacto
           </NavLink>
@@ -49,7 +49,7 @@ const Header = () => {
         {loggedIn ? (
           <button className={styles.btn} onClick={handleLogout}>Cerrar sesión</button>
         ) : (
-          <Link to="Ingresar">
+          <Link to="/ingresar">
             <button className={styles.btn}>Ingresar</button>
           </Link>
         )}

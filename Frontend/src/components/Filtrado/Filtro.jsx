@@ -4,8 +4,8 @@ import Context from '../../context/context';
 
 function Filtro() {
 
-
-    const { selectedOption, handleSelectChange } = useContext(Context);
+  const { selectedOption, handleSelectChange } = useContext(Context);
+  
     return (
         <select value={selectedOption} onChange={handleSelectChange} className={styles.select}>
             <option value="">Filtrar</option>
