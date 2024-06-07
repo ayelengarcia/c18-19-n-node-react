@@ -8,6 +8,8 @@ export const ContextProvider = ({ children }) => {
   const [selectedOption, setSelectedOption] = useState('');
   const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState(null);
+  //console.log(loggedIn)
 
   function handleSelectChange(event) {
     const selectedOption = event.target.value;
@@ -16,6 +18,28 @@ export const ContextProvider = ({ children }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
+  //uso el token para poder manipular el estado de logueo y poder actualizar los componentes que necesiten actualizarse luego de hacer el login
+  useEffect(() => {
+    //obtengo el token desde la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlToken = urlParams.get('token');
+    const savedToken = localStorage.getItem('token');
+    //si el token ya existe actualizo el estado
+    if(token){
+      setLoggedIn(true)
+    }
+    //con el token de la URL acualizo el estado
+    if (urlToken) {
+      setToken(urlToken);
+      setLoggedIn(true);
+      localStorage.setItem('token', urlToken);
+      //quito el token de la URL por seguridad
+      window.history.replaceState(null, '', window.location.pathname); 
+    } else if (savedToken) {
+      setToken(savedToken);
+      setLoggedIn(true);
+    }
+  }, []);
 
   useEffect(() => {
     let serviciosFiltradosTemp = servicios;
