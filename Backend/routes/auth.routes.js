@@ -2,9 +2,7 @@ const express = require('express')
 const passport = require('passport');
 const authRouter = express.Router()
 const jwt = require('jsonwebtoken')
-require('dotenv').config()
-/* const User = require('../models/user')
-const bcrypt = require('bcrypt') */
+
 
 // Ruta de registro
 authRouter.post('/register', (req, res, next) => {
@@ -49,7 +47,7 @@ authRouter.get('/google', passport.authenticate('google', { scope: ['profile', '
 
 authRouter.get('/google/callback', (req, res, next) => {
     passport.authenticate('google', { session: false }, (err, user, info) => {
-        
+
         if (err) {
             console.log('Error en Google callback:', err);
             return res.status(500).json({ error: 'Error en la autenticación con Google' });
@@ -68,10 +66,9 @@ authRouter.get('/google/callback', (req, res, next) => {
             const token = jwt.sign({ user: body }, process.env.JWT_SECRET_KEY, {
                 expiresIn: '1h',
             });
-            //res.status(200).json({ token });
-            
-            res.redirect('http://127.0.0.1:5173/');
-            
+            //redireciono al inicio del front con el token en la URL porque no supe como manipularlo desde el front
+            res.redirect(`http://127.0.0.1:5173/?token=${token}`);
+
         });
     })(req, res, next);
 });
@@ -81,20 +78,26 @@ authRouter.get('/facebook', passport.authenticate('facebook', { scope: ['email']
 
 authRouter.get('/facebook/callback', (req, res, next) => {
     passport.authenticate('facebook', { session: false }, (err, user) => {
-        if (err || !user) {
-            return res.redirect('/login'); // Redirige al login en caso de error
+
+        if (err) {
+            console.log('Error en Facebook callback:', err);
+            return res.status(500).json({ error: 'Error en la autenticación con Facebook' });
+        }
+        if (!user) {
+            console.log('Usario no encontrado:');
+            return res.status(401).json({ error: 'Usuario no encontrado' });
         }
 
         req.login(user, { session: false }, (loginErr) => {
             if (loginErr) {
-                return res.redirect('/login');
+                return res.status(500).json({ error: 'Falló el login' });
             }
-
-            const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, {
+            const body = { _id: user._id, email: user.email };
+            const token = jwt.sign({ user: body }, process.env.JWT_SECRET_KEY, {
                 expiresIn: '1h',
             });
 
-            return res.redirect(`/?token=${token}`); // Redirige a la página principal con el token
+            res.redirect(`http://127.0.0.1:5173/?token=${token}`);
         });
     })(req, res, next);
 });
