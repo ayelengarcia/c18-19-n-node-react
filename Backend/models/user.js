@@ -9,7 +9,9 @@ const UserSchema = new mongoose.Schema({
     password: { type: String 
         // quito el atributo de requerido ya que las constraseñas de google y facebook no llegan al modelo
         /*, require: true */ },
-    telefono: { type: Number, require: true, unique: true},
+    telefono: { type: Number, require: true,
+        //quito el atributo de unico ya que no todos los usuarios llegan al modelo desde los servicios de FB y G con este dato y se pueden repetir como null
+        /*  unique: true */},
     usuarioId: {
         type: mongoose.Schema.Types.ObjectId,
         index: true,
