@@ -26,7 +26,11 @@ const ServicioSchema = new mongoose.Schema({
         `${props.value} no es una hora válida! Debe tener el formato HH:MM`,
     },
   },
-  categoria: { type: String, required: true },
+  categoria: {
+    type: String,
+    required: true,
+    enum: ["oficina", "sala", "evento"],
+  },
 });
 
 module.exports = mongoose.model('Servicio', ServicioSchema);

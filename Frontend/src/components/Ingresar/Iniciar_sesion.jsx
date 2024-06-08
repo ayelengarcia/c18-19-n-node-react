@@ -22,15 +22,13 @@ const Iniciar_sesion = () => {
       msgSuccess("Sesión iniciada con éxito")
 
       setLoggedIn(true);
+      //navego al inicio luego de loguear para no perder el estado y no se vuelva a setear en false
+      navigate("/");
     } catch (error) {
       console.error('Error al iniciar sesión:', error.response.data);
       msgError("Error al iniciar sesión. Registrese o vuelva a intentar")
     }
   };
-  
-  if (loggedIn) {
-    navigate("/")
-  }
 
   return (
     <div style={{ width: '100%' }}>

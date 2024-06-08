@@ -72,39 +72,61 @@ passport.use(new JWTStrategy({
 ))
 
 // Estrategia de Google
-passport.use(new GoogleStrategy({
-    clientID: 'GOOGLE_CLIENT_ID',
-    clientSecret: 'GOOGLE_CLIENT_SECRET',
-    callbackURL: 'http://localhost:3000/auth/google/callback'
-}, async (accessToken, refreshToken, profile, done) => {
-    try {
-        const user = await User.findOne({ googleId: profile.id });
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID:
+        "324667454486-k28df1hp9p0is8t28pb86cp8int7gdch.apps.googleusercontent.com",
+      clientSecret: "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",
+      callbackURL: "http://localhost:3000/auth/google/callback",
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        //verifico que exista el usuario de google en la db
+        let user = await User.findOne({ googleId: profile.id });
+        //si ya existe continuo
+        if (user) {
+          console.log("ya existe usuario de google: ", user.nombre);
+
+          return done(null, user, {
+            message: "Ingresaste correctamente a tu OfiFlex!",
+          });
+        }
+        //verifico si el usuario que se inteta registrar ya exite con su mail en la db
+        user = await User.findOne({ email: profile.emails[0].value });
+        //si ya existe actualizo el google id en la db
 
         if (user) {
-            return done(null, user);
+          user.googleId = profile.id;
+          await user.save();
+          return done(null, user);
         }
-
+        //si no sucede ninguno de los 2 casos creo el usuario nuevo en la db
         const newUser = new User({
-            googleId: profile.id,
-            nombre: profile.displayName,
-            email: profile.emails[0].value
+          googleId: profile.id,
+          nombre: profile.displayName,
+          email: profile.emails[0].value,
+          telefono: profile.phoneNumbers ? profile.phoneNumbers[0].value : "",
         });
 
         await newUser.save();
-        done(null, newUser);
-    } catch (error) {
+        return done(null, newUser);
+      } catch (error) {
         done(error);
+      }
     }
-}));
+  )
+);
 
 // Estrategia de Facebook
 passport.use(new FacebookStrategy({
-    clientID: 'FACEBOOK_APP_ID',
-    clientSecret: 'FACEBOOK_APP_SECRET',
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
     callbackURL: 'http://localhost:3000/auth/facebook/callback',
     profileFields: ['id', 'displayName', 'photos', 'email']
 }, async (accessToken, refreshToken, profile, done) => {
     try {
+        console.log("auth.js log1", profile)
         const user = await User.findOne({ facebookId: profile.id });
 
         if (user) {
@@ -114,7 +136,8 @@ passport.use(new FacebookStrategy({
         const newUser = new User({
             facebookId: profile.id,
             nombre: profile.displayName,
-            email: profile.emails[0].value
+            email: profile.emails[0].value,
+            telefono: profile.phoneNumbers ? profile.phoneNumbers[0].value : ''
         });
 
         await newUser.save();
