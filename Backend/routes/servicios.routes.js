@@ -22,5 +22,4 @@ servicioRouter.delete(
 );
 // servicioRouter.delete("/:servicioID", verifyToken,servicioController.eliminarServicio);
 
-
 module.exports = servicioRouter
