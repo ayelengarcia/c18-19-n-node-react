@@ -8,8 +8,6 @@
  const authRoutes = require("./routes/auth.routes");
  const app = express();
  const mongoose = require("mongoose");
-//  const session = require("express-session");
-//  const MongoStore = require("connect-mongo");
 
 const corsOptions = {
   origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
@@ -37,6 +35,7 @@ app.use("/servicios", serviciosRoutes);
 
  // Conexión con MongoD
  async function main(){
- console.log(process.env.MONGO_URI)
-   await mongoose.connect(process.env.MONGO_URI)
+   await mongoose.connect(process.env.MONGO_URI, {
+     dbname: process.env.MONGO_DBNAME
+   });
  }

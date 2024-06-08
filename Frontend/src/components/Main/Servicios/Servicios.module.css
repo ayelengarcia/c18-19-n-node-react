@@ -70,6 +70,13 @@
   padding: 5px 0px;
 }
 
+.container_fecha{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
 .btn{
   background-color: #4169e1;
   color: white;

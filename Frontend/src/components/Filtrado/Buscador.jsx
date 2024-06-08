@@ -1,8 +1,9 @@
 import styles from './Buscador.module.css'
 import { useContext } from "react";
 import Context from '../../context/context.jsx';
-export const Buscador = () => {
+import Filtro from "./Filtro.jsx"
 
+export const Buscador = () => {
   const { busqueda, setBusqueda, handleSubmit } = useContext(Context);
     
     return (
@@ -17,7 +18,8 @@ export const Buscador = () => {
                 placeholder='🔍 Busca tu espacio favorito...'
                 value={busqueda}
                 onChange={event => setBusqueda(event.target.value)}
-            />
+        />
+        <Filtro />
         </form>
     )
 }
