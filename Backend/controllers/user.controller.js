@@ -1,4 +1,5 @@
 const Usuario = require('../models/user')
+const bcrypt = require('bcrypt')
 
 const obtenerUsuarios = async (req, res) => {
     const usuarios = await Usuario.find({}).exec()
@@ -48,10 +49,38 @@ const editarUsuario = async (req, res) => {
         res.status(500).json({ mensaje: 'Error interno del servidor'});
     }
 }
+const resetPassword = async (req, res) => {
+    //agregar api de mailing para confirmar el reset
+    const usuarioAEditar = await Usuario.findOne({ usuarioId: req.params.usuarioId }).exec()
+    const { usuarioId, contraseñaActual, nuevaContraseña } = req.body;
+    console.log(usuarioAEditar)
+    try{
+        if(!usuarioAEditar) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado'})
+        }
+
+        const contraseñaValida = await bcrypt.compare(contraseñaActual, usuarioAEditar.password);
+        if (!contraseñaValida) {
+            return res.status(401).json({ error: 'La contraseña actual es incorrecta' });
+        }
+
+        
+
+        usuarioAEditar.password = nuevaContraseña;
+
+        await usuarioAEditar.save();
+
+        res.status(200).json({ mensaje: 'Contraseña actualizada correctamente' });
+    } catch (error) {
+        console.error('Error al actualizar la contraseña del usuario', error);
+        res.status(500).json({ mensaje: 'Error interno del servidor'});
+    }
+}
 
 module.exports = {
     obtenerUsuarios,
     obtenerUsuarioPorId,
     eliminarUsuario,
-    editarUsuario
+    editarUsuario,
+    resetPassword
 }

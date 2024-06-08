@@ -3,10 +3,10 @@ const generarFechas = require('../helpers/generarFechas');
 const Servicio = require('../models/servicios')
 
 const crearServicio = async (req, res) => {
-    const { titulo, descripcion, categoria, hora, rangoFechas } = req.body
+    const { titulo, descripcion, imagen, categoria, hora, rangoFechas } = req.body
 
-    if (!titulo || !descripcion || !categoria || !hora) {
-        return res.status(400).json({ error: 'Se requiere titulo, descripcion, categoria y hora para crear un servicio' })
+    if (!titulo || !descripcion || !imagen || !categoria || !hora) {
+        return res.status(400).json({ error: 'Se requiere titulo, descripcion, imagen, categoria y hora para crear un servicio' })
     }
 
     let fechasDisponibles = [];
@@ -17,7 +17,7 @@ const crearServicio = async (req, res) => {
     console.log(fechasDisponibles);
 
     // Crear servicio nuevo:
-    const nuevoServicio = new Servicio({ titulo: titulo, descripcion: descripcion, categoria: categoria, hora: hora, fechasDisponibles: fechasDisponibles })
+    const nuevoServicio = new Servicio({ titulo: titulo, descripcion: descripcion, imagen: imagen, categoria: categoria, hora: hora, fechasDisponibles: fechasDisponibles })
     await nuevoServicio.save();
 
     // Devuelvo el nuevo servicio:

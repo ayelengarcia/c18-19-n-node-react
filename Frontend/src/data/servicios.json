@@ -1,0 +1,238 @@
+[{
+  "_id": {
+    "$oid": "66625fa54163b121189daa4b"
+  },
+  "servicioID": "66625fa54163b121189daa4a",
+  "titulo": "Nuevo Servicio",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625fb94163b121189daa50"
+  },
+  "servicioID": "66625fb94163b121189daa4f",
+  "titulo": "Servicio 0",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625fbe4163b121189daa55"
+  },
+  "servicioID": "66625fbe4163b121189daa54",
+  "titulo": "Servicio 1",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625fc24163b121189daa5a"
+  },
+  "servicioID":  "66625fc24163b121189daa59",
+  "titulo": "Servicio 2",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625fcc4163b121189daa5f"
+  },
+  "servicioID": "66625fcc4163b121189daa5e",
+  "titulo": "Servicio 3",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625fd44163b121189daa64"
+  },
+  "servicioID":  "66625fd44163b121189daa63",
+  "titulo": "Servicio 4",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625fd84163b121189daa69"
+  },
+  "servicioID": "66625fd84163b121189daa68",
+  "titulo": "Servicio 5",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625fdc4163b121189daa6e"
+  },
+  "servicioID":  "66625fdc4163b121189daa6d",
+  "titulo": "Servicio 6",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625fe04163b121189daa73"
+  },
+  "servicioID": "66625fe04163b121189daa72",
+  "titulo": "Servicio 7",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625fe64163b121189daa78"
+  },
+  "servicioID": "66625fe64163b121189daa77",
+  "titulo": "Servicio 8",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625ff24163b121189daa7d"
+  },
+  "servicioID": "66625ff24163b121189daa7c",
+  "titulo": "Servicio 9",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625ff64163b121189daa82"
+  },
+  "servicioID": "66625ff64163b121189daa81",
+  "titulo": "Servicio 10",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625ffa4163b121189daa87"
+  },
+  "servicioID":  "66625ffa4163b121189daa86",
+  "titulo": "Servicio 11",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66625ffe4163b121189daa8c"
+  },
+  "servicioID":  "66625ffe4163b121189daa8b",
+  "titulo": "Servicio 12",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666260034163b121189daa91"
+  },
+  "servicioID":  "666260034163b121189daa90",
+  "titulo": "Servicio 13",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666260064163b121189daa96"
+  },
+  "servicioID": "666260064163b121189daa95",
+  "titulo": "Servicio 14",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6662600a4163b121189daa9b"
+  },
+  "servicioID": "6662600a4163b121189daa9a",
+  "titulo": "Servicio 15",
+  "descripcion": "Descripción del servicio",
+  "imagen": "https://ejemplo.com/imagen.jpg",
+  "disponible": true,
+  "fechasDisponibles": [],
+  "hora": "09:00",
+  "categoria": "Oficinas",
+  "__v": 0
+}]
