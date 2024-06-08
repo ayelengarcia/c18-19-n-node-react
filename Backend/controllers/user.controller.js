@@ -6,8 +6,9 @@ const obtenerUsuarios = async (req, res) => {
     res.json(usuarios)
 }
 
+//cambio busqueda por _id para que coincida con el token y pueda decodificar en el front.
 const obtenerUsuarioPorId = async (req, res) => {
-    const usuario = await Usuario.findOne({ usuarioId: req.params.usuarioId }).exec()
+    const usuario = await Usuario.findOne({ _id: req.params.usuarioId }).exec()
 
     if (usuario) {
         res.json(usuario)
