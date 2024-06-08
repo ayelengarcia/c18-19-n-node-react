@@ -2,6 +2,7 @@ import styles from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import Context from "../../context/context"
+import OptionsUser from "./OptionsUser";
 
 const Header = () => {
   const { loggedIn, setLoggedIn, navigate } = useContext(Context);
@@ -17,7 +18,7 @@ const Header = () => {
     <div className={styles.container}>
       <div className={styles.container_menu}>
         <Link to="/">
-          <img className={styles.logo} src="/logotipo.png" alt="logo" />
+          <img className={styles.logo} src="/Logotipo.png" alt="logo" />
         </Link>
         <ul className={styles.container_ul}>
           <NavLink
@@ -47,7 +48,7 @@ const Header = () => {
         </ul>
 
         {loggedIn ? (
-          <button className={styles.btn} onClick={handleLogout}>Cerrar sesión</button>
+          <OptionsUser handleLogout={handleLogout} />
         ) : (
           <Link to="/ingresar">
             <button className={styles.btn}>Ingresar</button>

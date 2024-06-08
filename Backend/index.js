@@ -37,6 +37,7 @@ app.use("/servicios", serviciosRoutes);
 
  // Conexión con MongoD
  async function main(){
- console.log(process.env.MONGO_URI)
-   await mongoose.connect(process.env.MONGO_URI)
- }
+  await mongoose.connect(process.env.MONGO_URI, {
+    dbname: process.env.MONGO_DBNAME
+  });
+}

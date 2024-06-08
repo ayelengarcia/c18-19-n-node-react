@@ -4,6 +4,7 @@ import Inicio from "./Inicio/Inicio.jsx"
 import Servicios from "./Servicios/Servicios.jsx"
 import ServicioCategoria from "./Servicios/ServiciosCategoria.jsx"
 import ServicioDetail from "./Servicios/ServicioDetail.jsx"
+import { Panel } from './Panel/Panel.jsx'
 
 import Contacto from "./Contacto/Contacto.jsx"
 import Galeria from './Galeria/Galeria.jsx'
@@ -21,6 +22,8 @@ import Galeria from './Galeria/Galeria.jsx'
         <Route path='/servicios/:categoria/:id' element={<ServicioDetail />} />
         <Route path='/galeria' element={<Galeria />} />
         <Route path='/contacto' element={<Contacto />} />
+        <Route path='/panel' element={<Panel />} />
+
 
         <Route path='/*' element={<Navigate to="/"/>} />
         
