@@ -67,8 +67,7 @@ authRouter.get('/google/callback', (req, res, next) => {
                 expiresIn: '1h',
             });
             //redireciono al inicio del front con el token en la URL porque no supe como manipularlo desde el front
-            res.redirect(`http://127.0.0.1:5173/?token=${token}`);
-
+            res.redirect(`${process.env.URL_FRONT}/?token=${token}`);
         });
     })(req, res, next);
 });
@@ -97,7 +96,7 @@ authRouter.get('/facebook/callback', (req, res, next) => {
                 expiresIn: '1h',
             });
 
-            res.redirect(`http://127.0.0.1:5173/?token=${token}`);
+            res.redirect(`${process.env.URL_FRONT}/?token=${token}`);
         });
     })(req, res, next);
 });
