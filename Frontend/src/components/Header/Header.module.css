@@ -56,24 +56,23 @@
 
 .dropdown {
   position: relative;
-  width: 2.563rem;
-  height: 2.563rem;
-  cursor: pointer;
+  margin-bottom: .2rem;
 }
 
 .dropdown_menu {
   list-style: none;
   position: absolute;
-  left: -8rem;
+  right: 0;
+  top: 110%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   background-color: #25282A;
-  padding: .5rem;
+  padding: 2rem;
   border: 1px solid black;
   border-radius: .5rem;
-
+  
 }
 
 .dropdown_toggle {
@@ -83,10 +82,26 @@
 
 .dropdown_menu li {
   width: max-content;
-  font-size: .8rem;
 }
 
-.link {
+.link{
   text-decoration: none;
+  list-style: none;
   color: #FFFFFF;
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+
+.link:hover{
+  text-decoration: underline;
+}
+
+.link:active{
+  border-bottom: none;
+}
+
+.center{
+  display: flex;
+  justify-items: center;
+  align-items: center;
 }
