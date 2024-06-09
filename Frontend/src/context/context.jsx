@@ -3,6 +3,7 @@ import { createContext, useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useJwt } from "react-jwt";
 
 
 const Context = createContext();
@@ -17,7 +18,7 @@ export const ContextProvider = ({ children }) => {
   const urlParams = new URLSearchParams(window.location.search);
   const urlToken = urlParams.get('token');
   const savedToken = localStorage.getItem('token');
-  const authToken = urlToken || savedToken
+  const authToken = urlToken || savedToken;
 
   //Uso el token para poder manipular el estado de logueo y poder actualizar los componentes que necesiten actualizarse luego de hacer el login
   useEffect(() => {
@@ -53,30 +54,35 @@ export const ContextProvider = ({ children }) => {
 
 
   //TRAIGO LA API DE USER
-  const [usuarios, setUsuarios] = useState([]);
+  const [usuario, setUsuario] = useState([]);
+
+  // Decodificar el token para obtener el usuarioId
+  const { decodedToken } = useJwt(authToken);
+  const usuarioId = decodedToken?.user?._id;
+
 
   useEffect(() => {
-    const fetchUsuarios = async () => {
+    const fetchUsuario = async () => {
       try {
-        console.log("Using token:", authToken); // Verifica el token
-        const response = await axios.get("http://127.0.0.1:3000/user", {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
-        console.log("Datos de usuarios recibidos:", response.data); // Verifica la respuesta
-        setUsuarios(response.data);
+        if (authToken && usuarioId) {
+          const response = await axios.get(`http://127.0.0.1:3000/user/${usuarioId}`, {
+            headers: {
+              Authorization: authToken,
+            },
+          });
+          setUsuario([response.data]);
+        } else {
+          console.error("Token o usuario ID no disponibles");
+        }
       } catch (error) {
-        console.error("Error al obtener usuarios:", error);
+        console.error("Error al obtener usuario:", error);
       }
     };
 
-    if (authToken) {
-      fetchUsuarios();
-    } else {
-      console.error("Token no disponible");
+    if (authToken && usuarioId) {
+      fetchUsuario();
     }
-  }, [authToken]);
+  }, [authToken, usuarioId]);
 
 
   //Instancia para Redirecciones
@@ -176,7 +182,7 @@ export const ContextProvider = ({ children }) => {
 
 
   return (
-    <Context.Provider value={{ busqueda, setBusqueda, handleSubmit, serviciosFiltrados, setServiciosFiltrados, selectedFecha, selectedHora, handleSelectedFecha, handleSelectedHora, loggedIn, handleLogin, handleRegistro, login, setLogin, loginRef, setLoggedIn, msgError, msgSuccess, navigate, servicios, usuarios }}>
+    <Context.Provider value={{ busqueda, setBusqueda, handleSubmit, serviciosFiltrados, setServiciosFiltrados, selectedFecha, selectedHora, handleSelectedFecha, handleSelectedHora, loggedIn, handleLogin, handleRegistro, login, setLogin, loginRef, setLoggedIn, msgError, msgSuccess, navigate, servicios, usuario }}>
       {children}
     </Context.Provider>
   );

@@ -18,13 +18,11 @@
     "dependencies": {
         "apicache": "^1.6.3",
         "bcrypt": "^5.1.1",
-        "connect-mongo": "^5.1.0",
         "cors": "^2.8.5",
         "devicon": "^2.16.0",
         "dotenv": "^16.4.4",
         "express": "^4.19.2",
         "express-rate-limit": "^7.1.5",
-        "express-session": "^1.18.0",
         "express-validator": "^7.0.1",
         "googleapis": "^137.1.0",
         "jsonwebtoken": "^9.0.2",

@@ -3,28 +3,26 @@ import { Usuario } from './Usuario';
 import { Admin } from './Admin';
 import { Propietario } from './Propietario';
 import Context from '../../../context/context';
+// import usuarios from './usuarios.json'
+
 
 export const Panel = () => {
-  const { users } = useContext(Context);
+  const { usuario } = useContext(Context);
 
-  if (!users || users.length === 0) {
+  let rol;
+  if (!usuario || usuario.length === 0) {
     return <p>No hay usuarios disponibles.</p>;
   }
-
   {
-    users.map((user, id) => {
-      switch (user.rol) {
-        case 'usuario':
-          return <Usuario key={id} />;
-        case 'admin':
-          return <Admin key={id} />;
-        case 'propietario':
-          return <Propietario key={id} />;
-        default:
-          console.warn(`Tipo de usuario desconocido: ${user.rol}`);
-          return <Usuario key={id} />;
-      }
-    })
+    switch (usuario[0].rol) {
+      case 'usuario':
+        return rol = <Usuario />;
+      case 'admin':
+        return rol = <Admin />;
+      case 'propietario':
+        return rol = <Propietario />;
+      default:
+        return rol = <Usuario />;
+    }
   }
-
 };

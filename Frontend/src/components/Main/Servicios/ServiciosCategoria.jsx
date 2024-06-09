@@ -26,7 +26,7 @@ const ServicioCategoria = () => {
             descripcion={servicio.descripcion}
             disponible={servicio.disponible}
             imagen={servicio.imagen}
-            fecha={servicio.fechasDisponibles}
+            fecha={servicio.fecha}
             hora={servicio.hora}
             categoria={servicio.categoria}
           />
