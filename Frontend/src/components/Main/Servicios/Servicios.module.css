@@ -1,4 +1,4 @@
-/* SERVICIOS */
+/* SERVICIOS main*/
 .container_servicios{
   display: flex;
   flex-direction: column;
@@ -6,9 +6,38 @@
   justify-content: space-evenly;
   align-items: center;
   min-height: 500px;
+  gap: 20px;
+  padding: 30px;
 }
-
-.navlink{
+.servicios_cards{
+  color: #25282A;
+  text-decoration: none;
+  list-style: none;
+  transition: border 0,5s ease-in-out;
+  border-radius: 10px;
+  display: flex;
+  width: 100%;
+  height: 300px;
+}
+.servicios_cards:hover{
+  border:1px solid #4169e1;
+}
+.cards_content{
+  width: 50%;
+  height: 100%;
+  text-align: start;
+  place-content: center;
+  padding-right: 50px;
+}
+.cards_img{
+  width: 100%;
+  height: 100%;
+}
+.cards_title{
+  color: #4169e1;
+  margin-bottom: 10px;
+}
+/* .navlink{
   color: #25282A;
   text-decoration: none;
   list-style: none;
@@ -17,7 +46,7 @@
 
 .navlink:hover{
   color: #2c57da;
-}
+} */
 
 /* SERVICIOS CATEGORIA */
 .container{
