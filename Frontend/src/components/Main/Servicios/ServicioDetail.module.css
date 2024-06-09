@@ -18,6 +18,7 @@
     gap: 5rem;
     min-height: 100vh;
     margin-top: -5rem;
+    position: relative;
 }
 .container_text {
     text-align: start;
@@ -72,4 +73,21 @@
 .fecha_hora:hover{
     background-color: rgba(0, 128, 0, 0.618);
     cursor: default;
+}
+.volver{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4169e1;
+    color: white;
+    padding: .4rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    font-size: 1.1rem;
+    text-decoration: none;
 }

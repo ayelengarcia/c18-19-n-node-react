@@ -1,23 +1,25 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function PostDataDetail({servicio, usuario}) {
-  
-    const [postData, setPostData] = useState({
-        servicioId: '',
-        usuarioId: '',
-        usuarioReserva: '',
-        servicioReservado: ''
-      });
+function PostDataDetail({ servicio, usuario }) {
 
-      useEffect(() => {
-        setPostData({
-          servicioId: servicio.servicioID,
-          usuarioId: usuario[0].usuarioId,
-          usuarioReserva: usuario[0].nombre,
-          servicioReservado: servicio.titulo
-        });
-      }, [servicio, usuario]);
+  const [postData, setPostData] = useState({
+    servicioId: '',
+    usuarioId: '',
+    usuarioReserva: '',
+    servicioReservado: ''
+  });
+
+  useEffect(() => {
+    if(servicio && usuario[0]) {
+      setPostData({
+        servicioId: servicio.servicioID,
+        usuarioId: usuario[0].usuarioId,
+        usuarioReserva: usuario[0].nombre,
+        servicioReservado: servicio.titulo
+      });
+    }
+  }, [servicio, usuario]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +31,7 @@ function PostDataDetail({servicio, usuario}) {
         console.error('Error al enviar la solicitud:', error);
       });
   };
-  return ({handleSubmit})
+  return ({ handleSubmit })
 
 }
 
