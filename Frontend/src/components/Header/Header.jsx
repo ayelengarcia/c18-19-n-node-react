@@ -18,7 +18,7 @@ const Header = () => {
     <div className={styles.container}>
       <div className={styles.container_menu}>
         <Link to="/">
-          <img className={styles.logo} src="/Logotipo.png" alt="logo" />
+          <img className={styles.logo} src="/logotipo.png" alt="logo" />
         </Link>
         <ul className={styles.container_ul}>
           <NavLink

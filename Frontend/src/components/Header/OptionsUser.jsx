@@ -1,25 +1,50 @@
 import React, { useState } from 'react';
 import styles from "./Header.module.css";
-import { FaRegUserCircle } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
 
 const User = ({ handleLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [dropdownAbierto, setDropdownAbierto] = useState(false);
+
   const toggleDropdown = () => {
+    setDropdownAbierto(!dropdownAbierto);
     setIsOpen(!isOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsOpen(false);
+    setDropdownAbierto(!dropdownAbierto);
   };
 
   return (
     <div className={styles.dropdown}>
-      <FaRegUserCircle onClick={toggleDropdown} size={41} />
+      <button className={`${styles.btn} ${styles.center}`} onClick={toggleDropdown}>
+        Perfil {dropdownAbierto 
+        ? 
+        <IoIosArrowUp size={18} style={{ marginLeft: '.2rem' }}/> 
+        : 
+        <IoIosArrowDown size={18} style={{ marginLeft: '.2rem' }}/>}
+      </button>
       {isOpen && (
         <ul className={styles.dropdown_menu}>
-          <li className={styles.btn}><NavLink
-            to={'/panel'}
+          <li >
+            <NavLink
+              to={'/panel'}
+              className={styles.link}
+              onClick={closeDropdown}
+            >
+              Ir a mi perfil
+            </NavLink>
+          </li>
+          <li
+            onClick={handleLogout}
             className={styles.link}
-          >Ir a mi perfil</NavLink></li>
-          <li className={styles.btn} onClick={handleLogout}>Cerrar sesión</li>
+          >
+            Cerrar sesión
+          </li>
         </ul>
       )}
     </div>
