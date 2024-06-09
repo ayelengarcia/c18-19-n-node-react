@@ -11,13 +11,13 @@ function Filtro() {
   const horasUnicas = [...new Set(serviciosFiltrados.map((servicio) => servicio.hora))];
 
   return (
-    <div>
+    <div className={styles.container_input_filtro}>
       <select
         value={selectedFecha}
         onChange={handleSelectedFecha}
         className={styles.select}
       >
-        <option value="">Fecha</option>
+        <option value="">Fechas disponibles</option>
         {fechasUnicas.map((fecha, index) => (
           <option key={index} value={fecha}>{fecha}</option>
         ))}
@@ -28,11 +28,13 @@ function Filtro() {
         onChange={handleSelectedHora}
         className={styles.select}
       >
-        <option value="">Hora</option>
+        <option value="">Horarios disponibles</option>
         {horasUnicas.map((hora, index) => (
           <option key={index} value={hora}>{hora}</option>
         ))}
       </select>
+
+      <button className={styles.btn}>Limpiar</button>
     </div>
   );
 }

@@ -11,8 +11,8 @@ const ServicioDetail = () => {
 
 
   return (
-    <div className={styles.card} key={servicio._id}>
-      <img src={servicio.imagen} alt={servicio.titulo} />
+    <div className={styles.container_detail} key={servicio._id}>
+      <img className={styles.img_detail} src={servicio.imagen} alt={servicio.titulo} />
       <div>
         <h2>{servicio.titulo}</h2>
         <div className={styles.detalles}>
@@ -20,7 +20,7 @@ const ServicioDetail = () => {
           <p>{servicio.disponible ? 'Disponible' : 'No disponible'}</p>
           <p>{servicio.categoria}</p>
         </div>
-        <button className={styles.btn}>Reservar</button>
+        <button className={styles.btn}>Confirmar reserva</button>
       </div>
     </div>
   );

@@ -8,14 +8,14 @@ export const Buscador = () => {
     
     return (
         <form
-            action=""
+            className={styles.container_input}
             onSubmit={handleSubmit}
         >
             <input  className={styles.input}
                 type="text"
                 name='busqueda'
                 autoComplete='off'
-                placeholder='🔍 Busca tu espacio favorito...'
+                placeholder='Busca tu espacio favorito... 🔍'
                 value={busqueda}
                 onChange={event => setBusqueda(event.target.value)}
         />
