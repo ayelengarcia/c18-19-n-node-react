@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './ServicioDetail.module.css'
+import styles from '../ServicioDetail.module.css'
 import { TiArrowBack } from "react-icons/ti";
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ export const BtnBack = () => {
     return (
         <button
             onClick={handleClickBack}
-            className={styles.volver}>
+            className={styles.btn_volver}>
             <TiArrowBack size={22} style={{ marginRight: '.2rem' }}
             />
             Volver

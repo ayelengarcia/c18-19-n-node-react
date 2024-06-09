@@ -4,6 +4,7 @@
     align-items: center;
     gap: 1rem;
 }
+
 .center_column{
     display: flex;
     flex-direction: column;
@@ -11,30 +12,34 @@
     align-items: center;
     gap: 1rem;
 }
+
 .container{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5rem;
-    min-height: 100vh;
-    margin-top: -5rem;
+    min-height: 500px;
     position: relative;
+    padding: 20px;
 }
+
 .container_text {
     text-align: start;
     max-width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     gap: 2.5rem;
     color:#25282A;
 }
+
 .titulo{
     font-family: "Raleway", sans-serif;
-    font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: .5rem;
+    font-weight: 400;
+    font-size: 2.1rem;
+    color: #25282A;
+    margin-bottom: .6rem;
 }
 
 .btn {
@@ -45,7 +50,7 @@
     border-radius: .3rem;
     cursor: pointer;
     transition: background-color 0.5s ease;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .btn:hover{
@@ -53,14 +58,12 @@
 }
 
 .img {
-    width: 250px;
-    height: 250px;
+    width: 20rem;
     border-radius: .5rem;
 }
 
 .img_abajo {
-    width: 70px;
-    height: 70px;
+    width: 6rem;
 }
 
 .fecha_hora {
@@ -74,20 +77,21 @@
     background-color: rgba(0, 128, 0, 0.618);
     cursor: default;
 }
-.volver{
+
+.btn_volver{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #4169e1;
-    color: white;
-    padding: .4rem 1rem;
-    border: none;
+    color: #4169e1;
+    background-color: white;
+    border: 1px solid #4169e1;
+    padding: .4rem 1.6rem .4rem 1rem;
     border-radius: 1rem;
     cursor: pointer;
     transition: background-color 0.5s ease;
     position: absolute;
-    top: 15%;
-    right: 10%;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-decoration: none;
+    top: 18%;
+    right: 10%;
 }

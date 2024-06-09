@@ -1,4 +1,4 @@
-import styles from "./Servicios.module.css";
+import styles from "../Servicios.module.css";
 import { Link } from "react-router-dom";
 import { BiAlarm } from "react-icons/bi";
 import { BiCalendarAlt } from "react-icons/bi";

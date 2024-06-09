@@ -1,5 +1,5 @@
 import styles from './Servicios.module.css';
-import ServicioCard from './ServicioCard.jsx';
+import ServicioCard from './componentes/ServicioCard.jsx';
 import { useContext } from 'react';
 import Context from '../../../context/context.jsx';
 import { Buscador } from '../../Filtrado/Buscador.jsx';
