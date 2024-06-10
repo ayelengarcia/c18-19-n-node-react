@@ -1,4 +1,4 @@
-/* SERVICIOS */
+/* SERVICIOS main*/
 .container_servicios{
   display: flex;
   flex-direction: column;
@@ -6,6 +6,46 @@
   justify-content: space-evenly;
   align-items: center;
   min-height: 500px;
+  gap: 20px;
+  padding: 30px 50px;
+}
+
+.servicios_cards{
+  display: flex;
+  justify-content: space-between;
+  color: #25282A;
+  text-decoration: none;
+  list-style: none;
+  border-radius: 10px;
+  width: 100%;
+  transition: 0.5s ease-in-out;
+}
+
+.servicios_cards:hover{
+  background-color: rgb(218, 234, 248);
+}
+
+.cards_content{
+  width: 50%;
+  height: 100%;
+  text-align: start;
+  place-content: center;
+}
+
+.cards_img{
+  width: 100%;
+  height: 100%;
+}
+
+.cards_title{
+  color: #4169e1;
+  margin-bottom: 10px;
+  padding: 0px 40px;
+  font-size: 2rem;
+}
+
+.cards_parrafo{
+  padding: 0px 40px;
 }
 
 .navlink{
@@ -17,11 +57,10 @@
 
 .navlink:hover{
   color: #2c57da;
-}
+} 
 
 /* SERVICIOS CATEGORIA */
 .container{
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -32,12 +71,12 @@
   background-image: url("/banner-categoria.png");
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 500px;
+  min-height: 450px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 10px 0px 20px 0px;
 }
 
 .title_categoria{
@@ -52,15 +91,34 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 20px 30px;
+  padding: 0px 30px 20px 30px;
   gap: 10px;
+}
+
+/* SERVICIO CARD */
+
+.navlink{
+  list-style: none;
 }
 
 .card{
   max-width: 300px;
-  border: 1px solid #4169e1;
   padding: 10px;
   border-radius: 3px;
+  text-align: start;
+}
+
+.img_serv{
+  width: 100%;
+  border-radius: 18px;
+}
+
+.titulo_card{
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: #25282A;
+  font-family: "Raleway", sans-serif;
+  margin: 10px 0px 5px 0px;
 }
 
 .detalles{
@@ -68,6 +126,22 @@
   flex-direction: column;
   gap: 5px;
   padding: 5px 0px;
+  color: #25282A;
+}
+
+.p_fecha{
+  display: flex;
+  align-items: center;
+  text-indent: 5px;
+}
+
+.container_fecha{
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 5px;
 }
 
 .btn{
@@ -75,7 +149,26 @@
   color: white;
   padding: 8px 15px;
   border: none;
-  border-radius: 3px;
+  border-radius: .7rem;
   cursor: pointer;
-  transition: color 0.5s ease;
+  margin-top: 5px;
+  width: 100%;
+  transition: .5s;
+}
+
+.btn:hover {
+  background-color: #1442ce;
+}
+
+/* SERVICIO DETAIL */
+
+.container_detail{
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img_detail{
+  height: 300px;
 }

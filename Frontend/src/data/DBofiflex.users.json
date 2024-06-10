@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "6664658e2b96c9c98dee4b62"
+  },
+  "nombre": "Ayelen Giselle",
+  "email": "ayelengarcia7@gmail.com",
+  "telefono": null,
+  "usuarioId": {
+    "$oid": "6664658e2b96c9c98dee4b61"
+  },
+  "googleId": "113832718340260641072",
+  "rol": "usuario",
+  "listaReservas": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666466b1127da859f21a8f96"
+  },
+  "nombre": "prueba",
+  "apellido": "usuario",
+  "edad": 30,
+  "email": "prueba@gmail.com",
+  "password": "$2b$10$jX88bsNLbRAIq5r05OZnCeDUc1uXGbskw/yzcMdBMbqD9kmZ2PMt.",
+  "telefono": 1124979403,
+  "usuarioId": {
+    "$oid": "666466b1127da859f21a8f95"
+  },
+  "googleId": "",
+  "rol": "propietario",
+  "listaReservas": [],
+  "__v": 0
+}]

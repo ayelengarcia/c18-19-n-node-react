@@ -1,5 +1,5 @@
 import styles from './Servicios.module.css';
-import ServicioCard from './ServicioCard.jsx';
+import ServicioCard from './componentes/ServicioCard.jsx';
 import { useContext } from 'react';
 import Context from '../../../context/context.jsx';
 import { Buscador } from '../../Filtrado/Buscador.jsx';
@@ -16,7 +16,7 @@ const ServicioCategoria = () => {
       <div className={styles.banner_categoria}>
         <h2 className={styles.title_categoria}>{categoria.toUpperCase()}</h2>
       </div>
-      <Buscador />
+      <Buscador categoria={categoria} />
       <div className={styles.container_reservas}>
         {servicios.map(servicio => (
           <ServicioCard
@@ -26,7 +26,7 @@ const ServicioCategoria = () => {
             descripcion={servicio.descripcion}
             disponible={servicio.disponible}
             imagen={servicio.imagen}
-            fecha={servicio.fechasDisponibles}
+            fecha={servicio.fecha}
             hora={servicio.hora}
             categoria={servicio.categoria}
           />
