@@ -5,8 +5,8 @@ import { BiCalendarAlt } from "react-icons/bi";
 
 const ServicioCard = ({ id, titulo, descripcion, imagen, fecha, hora, categoria }) => {
   return (
-    <Link className={styles.navlink} to={`/servicios/${categoria}/${id}`}>
       <div className={styles.card} key={id}>
+        <Link className={styles.navlink} to={`/servicios/${categoria}/${id}`}>
         <img className={styles.img_serv} src={imagen} alt={titulo} />
         <div>
           <h3 className={styles.titulo_card}>{titulo}</h3>
@@ -18,12 +18,12 @@ const ServicioCard = ({ id, titulo, descripcion, imagen, fecha, hora, categoria 
               <p className={styles.p_fecha}><BiAlarm />{hora}hs</p>
             </div>
           </div>
-          <Link to={`/servicios/${categoria}/${id}`}>
-            <button className={styles.btn}>Reservar</button>
-          </Link>
         </div>
+        </Link>
+        <Link to={`/servicios/${categoria}/${id}`}>
+          <button className={styles.btn}>Reservar</button>
+        </Link>
       </div>
-    </Link>
   );
 };
 

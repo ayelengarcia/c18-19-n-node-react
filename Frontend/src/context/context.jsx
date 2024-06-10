@@ -5,34 +5,32 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useJwt } from "react-jwt";
 
-
 const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
-
-  //LOGICA MANUPULACION DE ESTADOS DE LOGGIN Y TOKEN
+  //LOGICA MANIPULACION DE ESTADOS DE LOGGIN Y TOKEN
   const [loggedIn, setLoggedIn] = useState(false);
   const [token, setToken] = useState(null);
 
   // Obtener token desde la URL o localStorage
   const urlParams = new URLSearchParams(window.location.search);
-  const urlToken = urlParams.get('token');
-  const savedToken = localStorage.getItem('token');
+  const urlToken = urlParams.get("token");
+  const savedToken = localStorage.getItem("token");
   const authToken = urlToken || savedToken;
 
-  //Uso el token para poder manipular el estado de logueo y poder actualizar los componentes que necesiten actualizarse luego de hacer el login
+  //Uso el token para manipular el estado de logueo y poder actualizar los componentes que necesiten luego de hacer el login
   useEffect(() => {
     //si el token ya existe actualizo el estado
     if (token) {
-      setLoggedIn(true)
+      setLoggedIn(true);
     }
     //con el token de la URL actualizo el estado
     if (urlToken) {
       setToken(urlToken);
       setLoggedIn(true);
-      localStorage.setItem('token', urlToken);
+      localStorage.setItem("token", urlToken);
       //quito el token de la URL por seguridad
-      window.history.replaceState(null, '', window.location.pathname);
+      window.history.replaceState(null, "", window.location.pathname);
     } else if (savedToken) {
       setToken(savedToken);
       setLoggedIn(true);
@@ -43,33 +41,35 @@ export const ContextProvider = ({ children }) => {
   const [servicios, setServicios] = useState([]);
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:3000/servicios")
-      .then(response => {
+    axios
+      .get("http://127.0.0.1:3000/servicios")
+      .then((response) => {
         setServicios(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error al obtener servicios:", error);
       });
   }, []);
 
-
-  //TRAIGO LA API DE USER
+  //TRAIGO LA API DE USER/:ID
   const [usuario, setUsuario] = useState([]);
 
-  // Decodificar el token para obtener el usuarioId
+  // Decodificar el token para obtener el id de mongo del usuario
   const { decodedToken } = useJwt(authToken);
   const usuarioId = decodedToken?.user?._id;
-
 
   useEffect(() => {
     const fetchUsuario = async () => {
       try {
         if (authToken && usuarioId) {
-          const response = await axios.get(`http://127.0.0.1:3000/user/${usuarioId}`, {
-            headers: {
-              Authorization: authToken,
-            },
-          });
+          const response = await axios.get(
+            `http://127.0.0.1:3000/user/${usuarioId}`,
+            {
+              headers: {
+                Authorization: authToken,
+              },
+            }
+          );
           setUsuario([response.data]);
         } else {
           console.error("Token o usuario ID no disponibles");
@@ -84,16 +84,14 @@ export const ContextProvider = ({ children }) => {
     }
   }, [authToken, usuarioId]);
 
-
   //Instancia para Redirecciones
   const navigate = useNavigate();
 
   //LOGICA BUSCADOR/FILTRO
-  const [busqueda, setBusqueda] = useState('');
-  const [selectedFecha, setSelectedFecha] = useState('');
-  const [selectedHora, setSelectedHora] = useState('');
+  const [busqueda, setBusqueda] = useState("");
+  const [selectedFecha, setSelectedFecha] = useState("");
+  const [selectedHora, setSelectedHora] = useState("");
   const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
-
 
   const handleSelectedFecha = (e) => {
     const selectedFecha = e.target.value;
@@ -104,35 +102,45 @@ export const ContextProvider = ({ children }) => {
     const selectedHora = e.target.value;
     setSelectedHora(selectedHora);
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
+  };
+
+  const clearFilters = () => {
+    setSelectedFecha("");
+    setSelectedHora("");
+    setBusqueda("")
   };
 
   useEffect(() => {
     let serviciosFiltradosTemp = servicios;
 
+    // Filtro de texto
+    if (busqueda) {
+      serviciosFiltradosTemp = serviciosFiltradosTemp.filter(
+        (element) =>
+          element.titulo.toLowerCase().includes(busqueda.toLowerCase()) ||
+          element.descripcion.toLowerCase().includes(busqueda.toLowerCase())
+      );
+    }
+
     // Filtro por fecha
     if (selectedFecha) {
-      serviciosFiltradosTemp = serviciosFiltradosTemp.filter(element => element.fecha === selectedFecha);
+      serviciosFiltradosTemp = serviciosFiltradosTemp.filter(
+        (element) => element.fecha === selectedFecha
+      );
     }
 
     // Filtro por hora
     if (selectedHora) {
-      serviciosFiltradosTemp = serviciosFiltradosTemp.filter(element => element.hora === selectedHora);
-    }
-
-    // Filtro de texto
-    if (busqueda) {
-      serviciosFiltradosTemp = serviciosFiltradosTemp.filter(element =>
-        element.titulo.toLowerCase().includes(busqueda.toLowerCase()) ||
-        element.descripcion.toLowerCase().includes(busqueda.toLowerCase())
+      serviciosFiltradosTemp = serviciosFiltradosTemp.filter(
+        (element) => element.hora === selectedHora
       );
     }
 
     setServiciosFiltrados(serviciosFiltradosTemp);
   }, [busqueda, selectedFecha, selectedHora, servicios]);
-
 
 
   //LOGICA ESTILO ACTIVE COMPONENTE INGRESAR/INICIAR-SESION/REGISTRO
@@ -142,18 +150,17 @@ export const ContextProvider = ({ children }) => {
   const navLink = (e) => {
     window.document.querySelector(".active")?.classList.remove("active");
     e.target.classList.add("active");
-  }
+  };
 
   const handleLogin = (e) => {
     navLink(e);
     setLogin(true);
-  }
+  };
 
   const handleRegistro = (e) => {
     navLink(e);
     setLogin(false);
-  }
-
+  };
 
   //TOAST PARA MENSAJES DE EXITO Y ERROR
   const msgError = (msg) =>
@@ -167,7 +174,7 @@ export const ContextProvider = ({ children }) => {
       progress: undefined,
       theme: "light",
     });
-  
+
   const msgSuccess = (msg) =>
     toast.success(msg, {
       position: "top-center",
@@ -180,9 +187,33 @@ export const ContextProvider = ({ children }) => {
       theme: "light",
     });
 
-
   return (
-    <Context.Provider value={{ busqueda, setBusqueda, handleSubmit, serviciosFiltrados, setServiciosFiltrados, selectedFecha, selectedHora, handleSelectedFecha, handleSelectedHora, loggedIn, handleLogin, handleRegistro, login, setLogin, loginRef, setLoggedIn, msgError, msgSuccess, navigate, servicios, usuario }}>
+    <Context.Provider
+      value={{
+        busqueda,
+        setBusqueda,
+        handleSubmit,
+        serviciosFiltrados,
+        setServiciosFiltrados,
+        selectedFecha,
+        selectedHora,
+        handleSelectedFecha,
+        handleSelectedHora,
+        loggedIn,
+        handleLogin,
+        handleRegistro,
+        login,
+        setLogin,
+        loginRef,
+        setLoggedIn,
+        msgError,
+        msgSuccess,
+        navigate,
+        servicios,
+        usuario,
+        clearFilters
+      }}
+    >
       {children}
     </Context.Provider>
   );

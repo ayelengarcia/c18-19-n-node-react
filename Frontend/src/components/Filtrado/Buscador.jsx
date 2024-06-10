@@ -3,7 +3,7 @@ import { useContext } from "react";
 import Context from '../../context/context.jsx';
 import Filtro from "./Filtro.jsx"
 
-export const Buscador = () => {
+export const Buscador = ({categoria}) => {
   const { busqueda, setBusqueda, handleSubmit } = useContext(Context);
     
     return (
@@ -19,7 +19,7 @@ export const Buscador = () => {
                 value={busqueda}
                 onChange={event => setBusqueda(event.target.value)}
         />
-        <Filtro />
+        <Filtro categoria={categoria} />
         </form>
     )
 }

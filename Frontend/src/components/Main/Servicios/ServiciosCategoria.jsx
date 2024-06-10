@@ -16,7 +16,7 @@ const ServicioCategoria = () => {
       <div className={styles.banner_categoria}>
         <h2 className={styles.title_categoria}>{categoria.toUpperCase()}</h2>
       </div>
-      <Buscador />
+      <Buscador categoria={categoria} />
       <div className={styles.container_reservas}>
         {servicios.map(servicio => (
           <ServicioCard
