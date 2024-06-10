@@ -1,5 +1,7 @@
 // const generarFechas = require('../helpers/generarFechas');
 
+// TODO: mirar comentario en trello sprint 4
+
 const Servicio = require('../models/servicios')
 
 const crearServicio = async (req, res) => {

@@ -21,7 +21,9 @@ const UserSchema = new mongoose.Schema({
     googleId: { type: String, default: "" },
     facebookId: { type: String },
     rol: { type: String, enum: ["usuario", "propietario", "admin"] , default: 'usuario'},
-    listaReservas: { type: Array, default: []}
+    listaReservas: { type: Array, default: []},
+    listaServicios: { type: Array, default: []},
+    imagenUrl: { type: String, default: '../resources/user-profile-unloggin.png' }
 })
 
 // Método para encriptar contraseña (Hook previo a crear un usuario, para hashear la contraseña y formar un usuario más seguro):
