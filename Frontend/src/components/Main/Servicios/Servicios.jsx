@@ -11,8 +11,8 @@ const Servicios = () => {
         </div>
         <div className={styles.cards_content}>
           <h2 className={styles.cards_title}>Oficinas</h2>
-          <p className={styles.cards_parrafo}>Nuestras oficinas, ideeales para equipos de hasta 10 personas,
-            ofrecen un entorno de trabajo cómodo y profesional. Internet de 100 mbps, sillas ergonómicas y,
+          <p className={styles.cards_parrafo}>Nuestras oficinas, ideales para equipos de hasta 10 personas.
+            Ofrecen un entorno de trabajo cómodo y profesional. Internet de 100 mbps, sillas ergonómicas y,
             en algunas oficinas, acceso a baños privados con cocina equipada.</p>
         </div>
       </NavLink>
