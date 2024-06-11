@@ -110,7 +110,7 @@ export const ContextProvider = ({ children }) => {
   const clearFilters = () => {
     setSelectedFecha("");
     setSelectedHora("");
-    setBusqueda("")
+    setBusqueda("");
   };
 
   useEffect(() => {

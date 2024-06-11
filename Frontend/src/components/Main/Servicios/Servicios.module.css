@@ -2,12 +2,13 @@
 .container_servicios{
   display: flex;
   flex-direction: column;
+  width: 95%;
   height: 100%;
   justify-content: space-evenly;
   align-items: center;
   min-height: 500px;
-  gap: 20px;
-  padding: 30px 50px;
+  padding: 3rem 4rem;
+  gap: 40px;
 }
 
 .servicios_cards{
@@ -16,13 +17,12 @@
   color: #25282A;
   text-decoration: none;
   list-style: none;
-  border-radius: 10px;
   width: 100%;
   transition: 0.5s ease-in-out;
 }
 
 .servicios_cards:hover{
-  background-color: rgb(218, 234, 248);
+  background-color: rgba(230, 243, 255, 0.515);
 }
 
 .cards_content{
@@ -39,15 +39,18 @@
 
 .cards_title{
   color: #4169e1;
-  margin-bottom: 10px;
-  padding: 0px 40px;
-  font-size: 2.8rem;
+  margin-bottom: 15px;
+  padding: 0px 4rem;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 .cards_parrafo{
-  padding: 0px 40px;
-  font-size: 1.3rem;
-  font-weight: 200;
+  padding: 0px 5rem .8rem 4rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #25282A;
+  text-align: justify;
 }
 
 .container_ul {

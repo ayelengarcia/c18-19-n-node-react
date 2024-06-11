@@ -1,6 +1,7 @@
 const Reserva = require('../models/reservas')
 const Usuario = require('../models/user')
 
+// TODO: cambiar el estado de disponible de los servicios de true a false;
 // crear la reserva:
 const crearReserva = async (req, res) => {
     const { servicioId, usuarioId, usuarioReserva, servicioReservado } = req.body
