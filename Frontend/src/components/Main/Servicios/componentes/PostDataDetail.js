@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function PostDataDetail({ servicio, usuario }) {
+function PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLoading }) {
 
   const [postData, setPostData] = useState({
     servicioId: '',
@@ -23,12 +23,18 @@ function PostDataDetail({ servicio, usuario }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     axios.post("http://127.0.0.1:3000/reservas", postData)
       .then(response => {
         console.log('Respuesta:', response.data);
+        setReservaId(response.data.reservaId);
+        setIsSuccess(true);
       })
       .catch(error => {
         console.error('Error al enviar la solicitud:', error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
   return ({ handleSubmit })
