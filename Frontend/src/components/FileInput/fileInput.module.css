@@ -1,0 +1,85 @@
+/* styles.css */
+.hidden {
+    display: none;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .flex-row {
+    flex-direction: row;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .gap-2 {
+    gap: 0.5rem; /* 2 * 0.25rem (Tailwind's default spacing scale) */
+  }
+  
+  .mt-2 {
+    margin-top: 0.5rem; /* 2 * 0.25rem (Tailwind's default spacing scale) */
+  }
+  
+  .box-border {
+    box-sizing: border-box;
+  }
+  
+  .border-solid {
+    border-style: solid;
+  }
+  
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  
+  .border-gray {
+    border-color: gray; /* Adjust if needed */
+  }
+  
+  .border-2 {
+    border-width: 2px;
+  }
+  
+  .p-3 {
+    padding: 0.75rem; /* 3 * 0.25rem (Tailwind's default spacing scale) */
+  }
+  
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  
+  .absolute {
+    position: absolute;
+  }
+  
+  .inline-flex {
+    display: inline-flex;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .translate-x {
+    transform: translateX(260%);
+  }
+  
+  .-translate-y {
+    transform: translateY(-80%);
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .text-base {
+    font-size: 1rem;
+  }
+  
+  .text-black {
+    color: black;
+  }
+  

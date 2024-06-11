@@ -1,5 +1,4 @@
 const express = require("express");
-const multer = require('multer');
 require("dotenv").config();
 const cors = require("cors");
 const passport = require("./auth/auth");
@@ -9,24 +8,11 @@ const serviciosRoutes = require("./routes/servicios.routes");
 const authRoutes = require("./routes/auth.routes");
 const app = express();
 const mongoose = require("mongoose");
-const upload = multer({ dest: 'uploads/' });
 
 const corsOptions = {
   origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
   optionsSuccessStatus: 200,
 };
-
-app.post('/upload', upload.single('imagen'), async (req, res) => {
-  const { userId } = req.body;
-  const imagePath = req.file.path; // Aquí tendrías que subir la imagen a un servicio y obtener la URL
-
-  try {
-    await User.findByIdAndUpdate(userId, { imagenUrl: imagePath });
-    res.send('Imagen subida y URL guardada');
-  } catch (err) {
-    res.status(500).send('Error subiendo la imagen');
-  }
-})
 
 app.use(cors(corsOptions));
 app.set("PORT", 3000);

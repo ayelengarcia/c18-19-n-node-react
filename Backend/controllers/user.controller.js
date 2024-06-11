@@ -27,17 +27,18 @@ const eliminarUsuario = async (req, res) => {
     }
 }
 
+// TODO: nombre,apellido, edad y telefono NADA MAS.
 const editarUsuario = async (req, res) => {
     const usuarioAEditar = await Usuario.findOne({ usuarioId: req.params.usuarioId }).exec()
     const updateParams = req.body;
 
-    try{
-        if(!usuarioAEditar) {
-            return res.status(404).json({ mensaje: 'Usuario no encontrado'})
+    try {
+        if (!usuarioAEditar) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' })
         }
 
-        for (const key in updateParams){
-            if(updateParams.hasOwnProperty(key)){
+        for (const key in updateParams) {
+            if (updateParams.hasOwnProperty(key)) {
                 usuarioAEditar[key] = updateParams[key]
             }
         }
@@ -47,7 +48,7 @@ const editarUsuario = async (req, res) => {
         res.json(usuarioAEditar);
     } catch (error) {
         console.error('Error al actualizar el perfil del usuario', error);
-        res.status(500).json({ mensaje: 'Error interno del servidor'});
+        res.status(500).json({ mensaje: 'Error interno del servidor' });
     }
 }
 const resetPassword = async (req, res) => {
@@ -55,17 +56,15 @@ const resetPassword = async (req, res) => {
     const usuarioAEditar = await Usuario.findOne({ usuarioId: req.params.usuarioId }).exec()
     const { usuarioId, contraseñaActual, nuevaContraseña } = req.body;
     console.log(usuarioAEditar)
-    try{
-        if(!usuarioAEditar) {
-            return res.status(404).json({ mensaje: 'Usuario no encontrado'})
+    try {
+        if (!usuarioAEditar) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' })
         }
 
         const contraseñaValida = await bcrypt.compare(contraseñaActual, usuarioAEditar.password);
         if (!contraseñaValida) {
             return res.status(401).json({ error: 'La contraseña actual es incorrecta' });
         }
-
-        
 
         usuarioAEditar.password = nuevaContraseña;
 
@@ -74,7 +73,7 @@ const resetPassword = async (req, res) => {
         res.status(200).json({ mensaje: 'Contraseña actualizada correctamente' });
     } catch (error) {
         console.error('Error al actualizar la contraseña del usuario', error);
-        res.status(500).json({ mensaje: 'Error interno del servidor'});
+        res.status(500).json({ mensaje: 'Error interno del servidor' });
     }
 }
 
