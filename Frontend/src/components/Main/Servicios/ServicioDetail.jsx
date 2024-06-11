@@ -16,8 +16,6 @@ const ServicioDetail = () => {
   const [reservaId, setReservaId] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-
-
   const { handleSubmit } = PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLoading });
 
   return (

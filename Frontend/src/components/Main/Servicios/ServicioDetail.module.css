@@ -117,8 +117,8 @@
 }
 
 .container_msj{
-    min-height: 100vh;
-    margin-top: -5rem;
+    min-height: 100%;
+    padding: 40px;
 }
 
 .last_msj{
