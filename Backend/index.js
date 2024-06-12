@@ -6,6 +6,7 @@ const userRoutes = require("./routes/user.routes");
 const reservasRoutes = require("./routes/reservas.routes");
 const serviciosRoutes = require("./routes/servicios.routes");
 const authRoutes = require("./routes/auth.routes");
+const uploadRoutes = require("./routes/upload.routes"); // Importa las rutas de upload
 const app = express();
 const mongoose = require("mongoose");
 
@@ -16,6 +17,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.set("PORT", 3000);
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(passport.initialize());
 
@@ -24,6 +26,7 @@ app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
 app.use("/reservas", reservasRoutes);
 app.use("/servicios", serviciosRoutes);
+app.use("/", uploadRoutes);
 
 // Conexión al puerto 3000
 const port = app.get("PORT");
@@ -33,7 +36,7 @@ app.listen(port, () => {
 
 main().catch((err) => console.log(err));
 
-// Conexión con MongoD
+// Conexión con MongoDB
 async function main() {
   await mongoose.connect(process.env.MONGO_URI, {
     dbname: process.env.MONGO_DBNAME
