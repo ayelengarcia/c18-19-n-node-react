@@ -7,7 +7,7 @@ import ServicioDetail from "./Servicios/ServicioDetail.jsx"
 import { Panel } from './Panel/Panel.jsx'
 
 import Contacto from "./Contacto/Contacto.jsx"
-import Galeria from './Galeria/Galeria.jsx'
+import Galeria from './Galeria2/Galeria2.jsx'
 
   const Main = () => {
   

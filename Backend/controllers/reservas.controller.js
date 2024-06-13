@@ -1,39 +1,55 @@
-const Reserva = require('../models/reservas')
-const Usuario = require('../models/user')
+const Reserva = require('../models/reservas');
+const Usuario = require('../models/user');
+const Servicio = require('../models/servicios');
 
-// TODO: cambiar el estado de disponible de los servicios de true a false;
-// crear la reserva:
 const crearReserva = async (req, res) => {
-    const { servicioId, usuarioId, usuarioReserva, servicioReservado } = req.body
+    const { servicioId, usuarioId, usuarioReserva, servicioReservado } = req.body;
 
     if (!servicioId || !usuarioId) {
-        return res.status(400).json({ error: 'Se requiere un servicio a reservar y un usuario que reserve' })
+        return res.status(400).json({ error: 'Se requiere un servicio a reservar y un usuario que reserve' });
     }
 
-    // Agarro al usuario para agregar la reserva a su perfil:
-    const usuarioAEditar = await Usuario.findOne({ usuarioId: usuarioId }).exec()
+    try {
+        // Buscar el usuario que realiza la reserva
+        const usuarioAEditar = await Usuario.findOne({ _id: usuarioId });
+        if (!usuarioAEditar) {
+            return res.status(400).json({ error: 'No se encontró al usuario' });
+        }
 
-    if (!usuarioAEditar) {
-        return res.status(400).json({ error: 'No se encontró al usuario' })
+        // Actualizar estado del servicio a no disponible y obtener el servicio actualizado
+        const servicio = await Servicio.findByIdAndUpdate(servicioId, { disponible: false }, { new: true });
+
+        res.status(201).json({
+            reservaId: nuevaReserva._id,
+            servicioActualizado: servicio,
+            mensaje: 'Reserva creada y estado del servicio actualizado correctamente'
+        });
+
+        // Crear reserva nueva
+        const nuevaReserva = new Reserva({ servicioId, usuarioId, usuarioReserva, servicioReservado });
+        await nuevaReserva.save();
+        console.log('Has hecho la reserva!')
+
+        // Agregar la nueva reserva a las citas del usuario
+        usuarioAEditar.listaReservas.push(nuevaReserva);
+        await usuarioAEditar.save();
+
+        // Devolver la nueva reserva
+        res.status(201).json(nuevaReserva);
+    } catch (error) {
+        console.error('Error al crear reserva:', error);
+        res.status(500).json({ error: 'Error al procesar la reserva' });
     }
+};
 
-    // Crear reserva nueva:
-    const nuevaReserva = new Reserva({ servicioId: servicioId, usuarioId: usuarioId, usuarioReserva: usuarioReserva, servicioReservado: servicioReservado })
-    await nuevaReserva.save();
-
-    // Agrego la nueva reserva las citas de ambos:
-    usuarioAEditar.listaReservas.push(nuevaReserva)
-
-    // Guardo en la db los datos:
-    await usuarioAEditar.save()
-
-    // Devuelvo la nueva reserva:
-    res.status(201).json(nuevaReserva)
+const obtenerReservasActivas = async (req, res) => {
+    const activas = await Reserva.find({ estado: 'activa' }).exec();
+    res.json(activas);
 }
 
-const obtenerReservas = async (req, res) => {
-    const reservas = await Reserva.find({}).exec()
-    res.json(reservas)
+const obtenerReservasFinalizadas = async (req, res) => {
+    const finalizadas = await Reserva.find({ estado: 'finalizada' }).exec();
+    res.json(finalizadas);
 }
 
 const obtenerReservasPorId = async (req, res) => {
@@ -61,12 +77,12 @@ const obtenerReservasPorId = async (req, res) => {
 
 const feedBack = async (req, res) => {
     const reservaRealizada = await Reserva.findOne({ reservaId: req.params.reservaId }).exec()
-    
+
     try {
         if (!reservaRealizada) {
             return res.status(404).json({ mensaje: 'Reserva no encontrada' })
         }
-        
+
         nuevoFeedback = `Feedback de la reserva (${reservaRealizada.reservaId}):\n`;
         nuevoFeedback += `Usuario: ${reservaRealizada.usuarioReserva}\n`;
         nuevoFeedback += `Detalles de la reserva: ${req.body.feedback}\n`;
@@ -83,7 +99,8 @@ const feedBack = async (req, res) => {
 
 module.exports = {
     crearReserva,
-    obtenerReservas,
+    obtenerReservasActivas,
+    obtenerReservasFinalizadas,
     obtenerReservasPorId,
     feedBack,
 }
