@@ -1,23 +1,36 @@
 import styles from "./Contacto.module.css";
 import { useForm } from "react-hook-form";
-
-//terminar de integrerar post de contacto ruta /sent-email
+import { useContext, useState } from "react";
+import axios from "axios";
+import Context from '../../../context/context.jsx';
+import { ToastContainer } from "react-toastify";
+import { Skeleton } from '@chakra-ui/react'
 
 const Contacto = () => {
-  const { handleSubmit, register, formState: { errors } } = useForm();
-  
-  const onSubmit = (data) => {
-    console.log(errors);
-    console.log(data);
+  const { msgError, msgSuccess } = useContext(Context);
+  const { handleSubmit, register, reset, formState: { errors } } = useForm();
+  const [loadingSent, setLoadingSent] = useState(false);
+
+  const onSubmit = async (data) => {
+    try {
+      setLoadingSent(true);
+      await axios.post("http://localhost:3000/sent-email", data)
+        .then((res) => msgSuccess("Mensaje enviado"))
+        .then((res) => setLoadingSent(false))
+        .then((res) => reset())
+    } catch (error) {
+      console.error("Error al enviar mensaje:", error.response?.data || error.message);
+      msgError("Error al enviar mensaje");
+      setLoadingSent(false)
+    }
   };
 
   return (
     <div className={styles.container}>
-      <form action="http://localhost:3000/sent-email" method="POST" onSubmit={handleSubmit(onSubmit)} className={styles.content_form}>
-
+      <form method="POST" onSubmit={handleSubmit(onSubmit)} className={styles.content_form}>
         <div className={styles.container_datos}>
           <div className={styles.content}>
-            <label htmlFor="nombre" className={styles.label}> Nombre </label>
+            <label htmlFor="nombre" className={styles.label}>Nombre</label>
             <input
               type="text"
               className={styles.standar}
@@ -35,9 +48,7 @@ const Contacto = () => {
           </div>
 
           <div className={styles.content}>
-            <label htmlFor="telefono" className={styles.label}>
-              Teléfono
-            </label>
+            <label htmlFor="telefono" className={styles.label}>Teléfono</label>
             <input
               type="number"
               id="telefono"
@@ -57,9 +68,7 @@ const Contacto = () => {
 
         <div className={styles.container_datos}>
           <div className={styles.content}>
-            <label htmlFor="asunto" className={styles.label}>
-              Asunto
-            </label>
+            <label htmlFor="asunto" className={styles.label}>Asunto</label>
             <input
               type="text"
               className={styles.standar}
@@ -71,9 +80,7 @@ const Contacto = () => {
           </div>
 
           <div className={styles.content}>
-            <label htmlFor="correo" className={styles.label}>
-              Correo electrónico
-            </label>
+            <label htmlFor="correo" className={styles.label}>Correo electrónico</label>
             <input
               type="email"
               id="correo"
@@ -95,9 +102,7 @@ const Contacto = () => {
         </div>
 
         <div>
-          <label htmlFor="mensaje" className={styles.label}>
-            Mensaje
-          </label>
+          <label htmlFor="mensaje" className={styles.label}>Mensaje</label>
           <textarea
             className={styles.area}
             id="mensaje"
@@ -112,8 +117,13 @@ const Contacto = () => {
           )}
         </div>
 
-        <button onClick={onSubmit} type="submit" className={styles.btn}>Enviar</button>
+        {loadingSent ? (
+          <Skeleton isLoaded className={styles.btn}> Enviando...</Skeleton>
+        ) : (
+            <button type="submit" className={styles.btn}>Enviar</button>
+        )}
       </form>
+      <ToastContainer />
     </div>
   );
 };
