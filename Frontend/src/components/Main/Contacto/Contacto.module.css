@@ -1,5 +1,6 @@
 .container{
-  padding: 4rem;
+  padding: 1rem 0px 5rem 0px;
+  text-align: center;
 }
 
 .content_form{
@@ -9,6 +10,7 @@
     text-align: start;
     width: 500px;
     box-shadow: -2px 2px 2px rgba(24,37,170,0.12);
+    margin: 0 auto;
 }
 
 .container_datos{
@@ -26,7 +28,8 @@
     display: inline-block;
     text-align: start;
     margin: 0px 0px 5px 5px;
-    font-size: .8rem;
+    font-size: .9rem;
+    font-weight: 600;
     color: #25282a9f;
 }
 
@@ -81,4 +84,25 @@
     width: 100%;
     height: 100px;
     font-family: "Raleway", sans-serif;
+}
+
+.container_titulo{
+    text-align: center; /* Centra el texto */
+    margin: 20px; /* Añade un margen alrededor del contenedor */
+    padding: 20px; /* Añade un relleno dentro del contenedor */
+}
+
+.title{
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #4169e1;
+    margin-bottom: 10px;
+}
+
+.subtitle{
+    padding: 0px 5rem 0 4rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #25282A;
+    text-align: center;
 }

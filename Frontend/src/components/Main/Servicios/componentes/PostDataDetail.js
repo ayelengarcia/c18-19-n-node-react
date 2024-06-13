@@ -37,6 +37,9 @@ function PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLo
         setReservaId(response.data.reservaId);
         setIsSuccess(true);
       })
+      .then(() => {
+        console.log('Estado del servicio actualizado correctamente');
+      })
       .catch(error => {
         console.error('Error al enviar la solicitud:', error);
       })
@@ -45,7 +48,6 @@ function PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLo
       });
   };
   return ({ handleSubmit })
-
 }
 
 export default PostDataDetail;
