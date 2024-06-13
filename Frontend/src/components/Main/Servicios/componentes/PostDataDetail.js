@@ -14,11 +14,11 @@ function PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLo
   });
 
   useEffect(() => {
-    if (servicio && usuario[0]) {
+    if (servicio && usuario) {
       setPostData({
         servicioId: servicio.servicioID,
-        usuarioId: usuario[0].usuarioId,
-        usuarioReserva: usuario[0].nombre,
+        usuarioId: usuario.usuarioId,
+        usuarioReserva: usuario.nombre,
         servicioReservado: servicio.titulo,
       });
     }

@@ -1,7 +1,12 @@
-import React from 'react'
+import styles from "./panel.module.css"
+import NavVertical from "./components/navVertical";
+import PropietarioPanel from "./PropietarioPanel.jsx";
 
 export const Propietario = () => {
   return (
-    <div>Propietario</div>
+    <div className={styles.container}>
+      <NavVertical />
+      <PropietarioPanel />
+    </div>
   )
 }

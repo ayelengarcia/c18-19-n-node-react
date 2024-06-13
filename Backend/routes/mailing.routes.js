@@ -3,6 +3,8 @@ require("dotenv").config();
 const mailingRouter = express.Router()
 const nodemailer = require("nodemailer");
 
+//crear endponit de mailing para el resset pass
+
 const transport = nodemailer.createTransport({
   service: "gmail",
   port: 587,

@@ -1,0 +1,22 @@
+.container{
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.container_nav{
+  width: 25%;
+  height: 100%;
+  background-color: rgb(232, 232, 232);
+  margin-top: 20px;
+}
+
+.container_user_panel, .container_prop_panel{
+  width: 75%;
+}
+
+.img_user{
+  width: 100px;
+  height: 100px;
+}

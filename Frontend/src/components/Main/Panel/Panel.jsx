@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Usuario } from './Usuario';
 import { Admin } from './Admin';
 import { Propietario } from './Propietario';
 import Context from '../../../context/context';
-// import usuarios from './usuarios.json'
+import styles from "./panel.module.css"
 
 
 //TRAER COMPONTENTE NAV VERTICAL (AYE)
@@ -13,10 +13,14 @@ export const Panel = () => {
 
   let rol;
   if (!usuario || usuario.length === 0) {
-    return <p>No hay usuarios disponibles.</p>;
+    return (
+      <div className={styles.container}>
+        <h2>No hay usuarios disponibles.</h2>;
+      </div>
+      )
   }
   {
-    switch (usuario[0].rol) {
+    switch (usuario.rol) {
       case 'usuario':
         return rol = <Usuario />;
       case 'admin':

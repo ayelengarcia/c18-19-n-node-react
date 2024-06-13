@@ -1,29 +1,15 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import ImageUploader from "../../FileInput/ImageUploader";
+import styles from "./panel.module.css"
+import NavVertical from "./components/navVertical";
+import UsuarioPanel from "./UsuarioPanel.jsx";
 
-export const Usuario = ({ userId }) => {
-  const [imageUrl, setImageUrl] = useState("");
 
-  useEffect(() => {
-    // Obtener la URL de la imagen del usuario desde el backend
-    const fetchImage = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/user/${userId}`);
-        const data = await response.json();
-        setImageUrl(data.imageUrl);
-      } catch (error) {
-        console.error("Error fetching image:", error);
-      }
-    };
 
-    fetchImage();
-  }, [userId]);
+export const Usuario = () => {
 
   return (
-    <>
-      <ImageUploader userId={userId} />
-      <div>{imageUrl ? <img src={imageUrl} alt="User Avatar" /> : <p>No image uploaded</p>}</div>
-    </>
+    <div className={styles.container}>
+      <NavVertical />
+      <UsuarioPanel />
+    </div>
   );
 };

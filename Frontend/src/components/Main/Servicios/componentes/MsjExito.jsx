@@ -4,7 +4,7 @@ import styles from '../ServicioDetail.module.css'
 export const MsjExito = ({ servicio, usuario, reservaId }) => {
   return (
     <>
-      {servicio && usuario[0] &&
+      {servicio && usuario &&
         <div className={`${styles.center_column} ${styles.container_msj}`}>
           <h1 className={styles.titulo_msj}>Reserva exitosa</h1>
           <div>
@@ -15,13 +15,13 @@ export const MsjExito = ({ servicio, usuario, reservaId }) => {
           </div>
           <h2 className={styles.subtitulo_msj}>Datos de usuario</h2>
           <div>
-            <h5 className={styles.datos}><b>Email: </b>{usuario[0].email}</h5>
-            <h5 className={styles.datos}><b>Nombre:</b> {usuario[0].nombre}</h5>
-            {usuario[0].apellido &&
-              <h5 className={styles.datos}><b>Apellido:</b> {usuario[0].apellido}</h5>
+            <h5 className={styles.datos}><b>Email: </b>{usuario.email}</h5>
+            <h5 className={styles.datos}><b>Nombre:</b> {usuario.nombre}</h5>
+            {usuario.apellido &&
+              <h5 className={styles.datos}><b>Apellido:</b> {usuario.apellido}</h5>
             }
-            {usuario[0].telefono &&
-              <h5 className={styles.datos}><b>Teléfono: </b>{usuario[0].telefono}</h5>
+            {usuario.telefono &&
+              <h5 className={styles.datos}><b>Teléfono: </b>{usuario.telefono}</h5>
             }
           </div>
           <div className={`${styles.center_column} ${styles.last_msj}`}>

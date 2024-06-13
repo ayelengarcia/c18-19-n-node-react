@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, useRef } from "react";
-// import servicios from "../data/servicios.json";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -28,7 +27,6 @@ export const ContextProvider = ({ children }) => {
       setLoggedIn(true);
       axios.defaults.headers.common["Authorization"] = "Bearer " + authToken;
       localStorage.setItem('token', authToken);
-      console.log(authToken);
     } else {
       delete axios.defaults.headers.common["Authorization"];
       localStorage.removeItem('token');
@@ -69,7 +67,7 @@ export const ContextProvider = ({ children }) => {
               },
             }
           );
-          setUsuario([response.data]);
+          setUsuario(response.data);
         } else {
           console.error("Token o usuario ID no disponibles");
         }
@@ -220,24 +218,3 @@ export const ContextProvider = ({ children }) => {
 };
 
 export default Context;
-
-
-
-//Uso el token para manipular el estado de logueo y poder actualizar los componentes que necesiten luego de hacer el login
-/*   useEffect(() => {
-    //si el token ya existe actualizo el estado
-    if (token) {
-      setLoggedIn(true);
-    }
-    //con el token de la URL actualizo el estado
-    if (urlToken) {
-      setToken(urlToken);
-      setLoggedIn(true);
-      localStorage.setItem("token", urlToken);
-      //quito el token de la URL por seguridad
-      window.history.replaceState(null, "", window.location.pathname);
-    } else if (savedToken) {
-      setToken(savedToken);
-      setLoggedIn(true);
-    }
-  }, []); */
