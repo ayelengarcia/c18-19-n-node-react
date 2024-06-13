@@ -46,7 +46,7 @@ const obtenerReservasPorId = async (req, res) => {
     }
 }
 
-const cancelarReserva = async (req, res) => {
+/* const cancelarReserva = async (req, res) => {
     const ReservaACancelar = await Reserva.findOne({ reservaId: req.params.reservaId }).exec()
 
     if (!ReservaACancelar) {
@@ -57,7 +57,7 @@ const cancelarReserva = async (req, res) => {
         await ReservaACancelar.save()
         return res.status(200).json({ error: 'Reserva cancelada correctamente' })
     }
-}
+} */
 
 const feedBack = async (req, res) => {
     const reservaRealizada = await Reserva.findOne({ reservaId: req.params.reservaId }).exec()
@@ -85,6 +85,5 @@ module.exports = {
     crearReserva,
     obtenerReservas,
     obtenerReservasPorId,
-    cancelarReserva,
     feedBack,
 }

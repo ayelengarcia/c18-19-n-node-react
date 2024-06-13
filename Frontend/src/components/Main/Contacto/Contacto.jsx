@@ -1,6 +1,7 @@
 import styles from "./Contacto.module.css";
 import { useForm } from "react-hook-form";
 
+//terminar de integrerar post de contacto ruta /sent-email
 
 const Contacto = () => {
   const { handleSubmit, register, formState: { errors } } = useForm();
@@ -12,7 +13,7 @@ const Contacto = () => {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.content_form}>
+      <form action="http://localhost:3000/sent-email" method="POST" onSubmit={handleSubmit(onSubmit)} className={styles.content_form}>
 
         <div className={styles.container_datos}>
           <div className={styles.content}>
@@ -22,6 +23,7 @@ const Contacto = () => {
               className={styles.standar}
               id="nombre"
               placeholder="Nombre"
+              name="nombre"
               {...register("nombre", {
                 required: { value: true, message: "Nombre requerido" },
                 minLength: { value: 3, message: "Mínimo tres dígitos" },
@@ -40,6 +42,7 @@ const Contacto = () => {
               type="number"
               id="telefono"
               placeholder="Teléfono"
+              name="telefono"
               className={styles.standar}
               {...register("telefono", {
                 required: { value: true, message: "Teléfono requerido" },
@@ -62,6 +65,7 @@ const Contacto = () => {
               className={styles.standar}
               id="asunto"
               placeholder="Asunto"
+              name="asunto"
               {...register("asunto")}
             />
           </div>
@@ -75,6 +79,7 @@ const Contacto = () => {
               id="correo"
               placeholder="Correo electrónico"
               className={styles.standar}
+              name="email"
               {...register("email", {
                 required: { value: true, message: "Correo requerido" },
                 pattern: {
@@ -97,6 +102,7 @@ const Contacto = () => {
             className={styles.area}
             id="mensaje"
             placeholder="Escribe tu mensaje aquí..."
+            name="mensaje"
             {...register("mensaje", {
               required: { value: true, message: "Mensaje requerido " },
             })}

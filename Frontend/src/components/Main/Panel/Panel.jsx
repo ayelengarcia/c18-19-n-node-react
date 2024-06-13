@@ -6,6 +6,8 @@ import Context from '../../../context/context';
 // import usuarios from './usuarios.json'
 
 
+//TRAER COMPONTENTE NAV VERTICAL (AYE)
+
 export const Panel = () => {
   const { usuario } = useContext(Context);
 
