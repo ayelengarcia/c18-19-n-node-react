@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import Context from "../../../../context/context.jsx";
 
 function PostDataDetail({ servicio, usuario }) {
+
+  const { authToken } = useContext(Context);
 
   const [postData, setPostData] = useState({
     servicioId: '',
@@ -11,19 +14,23 @@ function PostDataDetail({ servicio, usuario }) {
   });
 
   useEffect(() => {
-    if(servicio && usuario[0]) {
+    if (servicio && usuario[0]) {
       setPostData({
         servicioId: servicio.servicioID,
         usuarioId: usuario[0].usuarioId,
         usuarioReserva: usuario[0].nombre,
-        servicioReservado: servicio.titulo
+        servicioReservado: servicio.titulo,
       });
     }
   }, [servicio, usuario]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://127.0.0.1:3000/reservas", postData)
+    axios.post("http://127.0.0.1:3000/reservas", postData, {
+      headers: {
+        authorization: 'Bearer ' + authToken
+      }
+    })
       .then(response => {
         console.log('Respuesta:', response.data);
       })

@@ -3,7 +3,7 @@ const reservaRouter = express.Router()
 const reservaController = require('../controllers/reservas.controller')
 const verifyToken = require('../middlewares/authMiddleware')
 
-reservaRouter.post('/', reservaController.crearReserva)
+reservaRouter.post('/', verifyToken, reservaController.crearReserva)
 reservaRouter.get('/', verifyToken, reservaController.obtenerReservas)
 reservaRouter.get('/:reservaId', verifyToken, reservaController.obtenerReservasPorId)
 reservaRouter.post('/:reservaId', verifyToken, reservaController.feedBack)

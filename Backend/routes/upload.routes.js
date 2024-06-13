@@ -22,9 +22,11 @@ uploadRouter.post('/upload', verifyToken, checkRole(["usuario", "propietario"]),
   try {
     const file = req.file;
     const usuarioId = req.userId;
+    const token = req.body.token;
 
     console.log(req.body);
     console.log(usuarioId);
+    console.log("token:", token);
 
     if (!file) {
       return res.status(400).send({ error: 'No hay un archivo subido' });
@@ -39,7 +41,7 @@ uploadRouter.post('/upload', verifyToken, checkRole(["usuario", "propietario"]),
       return res.status(404).send({ error: 'Usuario no encontrado' });
     }
 
-    res.redirect("http://localhost:5173/panel")
+    res.status(200).json({ message: 'Imagen subida exitosamente', imagenUrl: user.imagenUrl });
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
