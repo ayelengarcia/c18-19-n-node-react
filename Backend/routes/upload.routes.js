@@ -35,13 +35,7 @@ uploadRouter.post('/upload', verifyToken, checkRole(["usuario", "propietario"]),
     const base64Image = file.buffer.toString('base64');
     const imagenUrl = `data:${file.mimetype};base64,${base64Image}`;
 
-    // Actualizar la URL de la imagen del usuario en la base de datos
-    const user = await User.findByIdAndUpdate(usuarioId, { imagenUrl }, { new: true });
-    if (!user) {
-      return res.status(404).send({ error: 'Usuario no encontrado' });
-    }
-
-    res.status(200).json({ message: 'Imagen subida exitosamente', imagenUrl: user.imagenUrl });
+    res.status(200).json({ message: 'Imagen subida exitosamente', imagenUrl: User.imagenUrl });
   } catch (error) {
     res.status(500).send({ error: error.message });
   }

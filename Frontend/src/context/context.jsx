@@ -8,20 +8,34 @@ import { useJwt } from "react-jwt";
 const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
+  const savedToken = localStorage.getItem("token");
   //LOGICA MANIPULACION DE ESTADOS DE LOGGIN Y TOKEN
   const [loggedIn, setLoggedIn] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(savedToken);
 
   // Obtener token desde la URL o localStorage
   const urlParams = new URLSearchParams(window.location.search);
   const urlToken = urlParams.get("token");
-  const savedToken = localStorage.getItem("token");
-
+  
   // Guarda alguno de los 2 token;
   const authToken = urlToken || savedToken;
 
   //Uso el token para manipular el estado de logueo y poder actualizar los componentes que necesiten luego de hacer el login
-/*   useEffect(() => {
+  useEffect(() => {
+    if (authToken) {
+      setToken(authToken);
+      setLoggedIn(true);
+      axios.defaults.headers.common["Authorization"] = "Bearer " + authToken;
+      localStorage.setItem("token", authToken);
+      console.log(authToken);
+    } else {
+      delete axios.defaults.headers.common["Authorization"];
+      localStorage.removeItem("token");
+      setLoggedIn(false);
+    }
+  }, [authToken]);
+
+    /*   useEffect(() => {
     //si el token ya existe actualizo el estado
     if (token) {
       setLoggedIn(true);
@@ -37,31 +51,7 @@ export const ContextProvider = ({ children }) => {
       setToken(savedToken);
       setLoggedIn(true);
     }
-  }, []); */
-
-  useEffect(() => {
-    if (authToken) {
-      setToken(authToken);
-      setLoggedIn(true);
-      axios.defaults.headers.common["Authorization"] = "Bearer " + authToken;
-      localStorage.setItem('token', authToken);
-      console.log(authToken);
-    } else {
-      delete axios.defaults.headers.common["Authorization"];
-      localStorage.removeItem('token');
-    }
-    /* if (urlToken) {
-      setToken(urlToken);
-      setLoggedIn(true);
-      localStorage.setItem("token", urlToken);
-      axios.defaults.headers.common["Authorization"] = "Bearer " + urlToken;
-      //quito el token de la URL por seguridad
-      window.history.replaceState(null, "", window.location.pathname);
-    } else if (savedToken) {
-      setToken(savedToken);
-      setLoggedIn(true);
-    } */
-  }, [authToken]);
+    }, []); */
 
   //TRAIGO LA API DE SERVICIOS
   const [servicios, setServicios] = useState([]);
@@ -82,20 +72,17 @@ export const ContextProvider = ({ children }) => {
 
   // Decodificar el token para obtener el id de mongo del usuario
   const { decodedToken } = useJwt(authToken);
-  const usuarioId = decodedToken?.user?._id;
+  const usuarioId = decodedToken?.user?._id;  // esto es lo mismo que req.userId?
 
   useEffect(() => {
     const fetchUsuario = async () => {
       try {
         if (authToken && usuarioId) {
-          const response = await axios.get(
-            `http://127.0.0.1:3000/user/${usuarioId}`,
-            {
-              headers: {
-                Authorization: authToken,
-              },
-            }
-          );
+          const response = await axios.get(`http://127.0.0.1:3000/user/${usuarioId}`, {
+            headers: {
+              Authorization: authToken,
+            },
+          });
           setUsuario([response.data]);
         } else {
           console.error("Token o usuario ID no disponibles");
@@ -153,21 +140,16 @@ export const ContextProvider = ({ children }) => {
 
     // Filtro por fecha
     if (selectedFecha) {
-      serviciosFiltradosTemp = serviciosFiltradosTemp.filter(
-        (element) => element.fecha === selectedFecha
-      );
+      serviciosFiltradosTemp = serviciosFiltradosTemp.filter((element) => element.fecha === selectedFecha);
     }
 
     // Filtro por hora
     if (selectedHora) {
-      serviciosFiltradosTemp = serviciosFiltradosTemp.filter(
-        (element) => element.hora === selectedHora
-      );
+      serviciosFiltradosTemp = serviciosFiltradosTemp.filter((element) => element.hora === selectedHora);
     }
 
     setServiciosFiltrados(serviciosFiltradosTemp);
   }, [busqueda, selectedFecha, selectedHora, servicios]);
-
 
   //LOGICA ESTILO ACTIVE COMPONENTE INGRESAR/INICIAR-SESION/REGISTRO
   const [login, setLogin] = useState(true);
@@ -238,7 +220,7 @@ export const ContextProvider = ({ children }) => {
         servicios,
         usuario,
         clearFilters,
-        authToken
+        authToken,
       }}
     >
       {children}

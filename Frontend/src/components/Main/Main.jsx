@@ -24,7 +24,6 @@ import Galeria from './Galeria/Galeria.jsx'
         <Route path='/contacto' element={<Contacto />} />
         <Route path='/panel' element={<Panel />} />
 
-
         <Route path='/*' element={<Navigate to="/"/>} />
         
       </Routes>
