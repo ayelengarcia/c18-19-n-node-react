@@ -53,33 +53,33 @@ const crearServicio = async (req, res) => {
 // }
 
 const obtenerServicios = async (req, res) => {
-    const servicios = await Servicio.find({}).exec()
-    res.json(servicios)
+  const servicios = await Servicio.find({}).exec()
+  res.json(servicios)
 }
 
 const obtenerServicioPorCategoria = async (req, res) => {
-    const servicios = await Servicio.findOne({ categoria: req.params.categoria }).exec()
+  const servicios = await Servicio.findOne({ categoria: req.params.categoria }).exec()
 
-    if (servicios) {
-        res.json(servicios)
-    } else {
-        res.status(404).json({ error: 'Categoria del servicio no encontrada' })
-    }
+  if (servicios) {
+    res.json(servicios)
+  } else {
+    res.status(404).json({ error: 'Categoria del servicio no encontrada' })
+  }
 }
 
 const eliminarServicio = async (req, res) => {
-    const servicioAEliminar = await Servicio.deleteOne({ servicioId: req.params.servicioId }).exec()
+  const servicioAEliminar = await Servicio.deleteOne({ servicioId: req.params.servicioId }).exec()
 
-    if (!servicioAEliminar) {
-        return res.status(404).json({ error: 'Servicio no encontrado' })
-    } else {
-        return res.status(200).json({ error: 'Servicio eliminado correctamente' })
-    }
+  if (!servicioAEliminar) {
+    return res.status(404).json({ error: 'Servicio no encontrado' })
+  } else {
+    return res.status(200).json({ error: 'Servicio eliminado correctamente' })
+  }
 }
 
 module.exports = {
-    crearServicio,
-    obtenerServicios,
-    obtenerServicioPorCategoria,
-    eliminarServicio
+  crearServicio,
+  obtenerServicios,
+  obtenerServicioPorCategoria,
+  eliminarServicio
 }
