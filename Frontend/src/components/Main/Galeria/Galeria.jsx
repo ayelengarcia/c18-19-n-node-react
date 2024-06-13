@@ -1,6 +1,7 @@
 import styles from "./Gale.module.css"
-import { useEffect, useRef,useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import data from "./data"
+
 const Galeria = () => {
   const listRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
