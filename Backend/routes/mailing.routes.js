@@ -1,18 +1,16 @@
 const express = require("express")
+require("dotenv").config();
 const mailingRouter = express.Router()
 const nodemailer = require("nodemailer");
-
-// CREAR ENDPOINT DE MAIL PARA RESET PASSPORT Y CAMBIAR LA CUENTA A LA DE NOCOUNTRY -
 
 const transport = nodemailer.createTransport({
   service: "gmail",
   port: 587,
   auth: {
-    user: "ayelengarcia7@gmail.com",
-    pass: "skglapnqwtgbonzi",
+    user: process.env.USER_GMAIL,
+    pass: process.env.PASS_GMAIL,
   },
 });
-
 
 mailingRouter.post("/", async (req, res) => {
   try {
