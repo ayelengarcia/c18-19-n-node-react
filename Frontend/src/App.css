@@ -49,3 +49,22 @@ h1, h2, h3, h4, h5{
   color: #4169e1;
   border-bottom: 3px solid #4169e1;
 }
+
+.carouselExampleFade{
+  width: 700px;
+}
+
+.carousel-control-next, .carousel-control-prev{
+    background: rgba(0, 0, 0, 0.664) !important;
+
+  }
+
+.w-100 {
+    width: 100% !important;
+    position: absolute;
+    top: -200px;
+}
+
+.carousel-item{
+ height: 500px;
+}
