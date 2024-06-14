@@ -1,20 +1,26 @@
 import styles from './ServicioDetail.module.css'
 import { useParams } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Context from '../../../context/context.jsx';
 import PostDataDetail from './componentes/PostDataDetail.js';
 import { BtnBack } from './componentes/BtnBack.jsx';
+import { MsjExito } from './componentes/MsjExito.jsx';
+import { Button, Stack } from '@chakra-ui/react'
 
 const ServicioDetail = () => {
   const { servicios, usuario } = useContext(Context);
   const { id } = useParams();
   const servicio = servicios.find((servicio) => servicio.servicioID === id);
 
-  const { handleSubmit } = PostDataDetail({ servicio, usuario });
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [reservaId, setReservaId] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const { handleSubmit } = PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLoading });
 
   return (
     <>
-      {servicio &&
+      {!isSuccess && servicio ? (
         <div className={styles.container}>
           <BtnBack></BtnBack>
           {/* Parte de imagenes */}
@@ -38,11 +44,25 @@ const ServicioDetail = () => {
               <p className={styles.fecha_hora}>{servicio.hora}</p>
             </div>
             <form onSubmit={handleSubmit}>
-              <button className={styles.btn}>Confirmar Reserva</button>
+              <Stack>
+                <Button
+                  isLoading={isLoading}
+                  loadingText='Cargando datos'
+                  colorScheme='teal'
+                  variant='outline'
+                  spinnerPlacement='end'
+                  type='submit'
+                  className={styles.btn}
+                >
+                  Confirmar reserva
+                </Button>
+              </Stack>
             </form>
           </div>
         </div>
-      }
+      ) : (
+        <MsjExito usuario={usuario} servicio={servicio} reservaId={reservaId} />
+      )}
     </>
   );
 };

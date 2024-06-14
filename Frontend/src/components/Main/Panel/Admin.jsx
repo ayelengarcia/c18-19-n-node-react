@@ -1,7 +1,9 @@
-import React from 'react'
+import styles from "./panel.module.css"
 
 export const Admin = () => {
   return (
-    <div>Admin</div>
+    <div className={styles.container}>
+      <div>Propietario</div>
+    </div>
   )
 }

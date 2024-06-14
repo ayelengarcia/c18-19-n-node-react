@@ -2,6 +2,9 @@ const mongoose = require('mongoose')
 
 // TODO: Modificar categoria, fecha y hora. A categorias limitarle 3 o 4 cadenas de string segun las categorias y a fecha y hora buscar una opcion de mongoose con Date. para que solo se pasen fechas u horas.
 const ServicioSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+  },
   servicioID: {
     type: mongoose.Schema.Types.ObjectId,
     index: true,

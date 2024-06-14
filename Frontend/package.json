@@ -10,14 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "axios": "^1.7.2",
+    "framer-motion": "^11.2.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.5",
     "react-icons": "^5.2.1",
     "react-jwt": "^1.2.1",
     "react-router-dom": "^6.23.1",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

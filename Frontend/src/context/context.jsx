@@ -1,44 +1,43 @@
 import { createContext, useState, useEffect, useRef } from "react";
-// import servicios from "../data/servicios.json";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useJwt } from "react-jwt";
 
-const Context = createContext();
 
+const Context = createContext();
 export const ContextProvider = ({ children }) => {
+  
   //LOGICA MANIPULACION DE ESTADOS DE LOGGIN Y TOKEN
+  const savedToken = localStorage.getItem("token");
+
   const [loggedIn, setLoggedIn] = useState(false);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(savedToken);
 
   // Obtener token desde la URL o localStorage
   const urlParams = new URLSearchParams(window.location.search);
   const urlToken = urlParams.get("token");
-  const savedToken = localStorage.getItem("token");
+
+  // Guarda alguno de los 2 token;
   const authToken = urlToken || savedToken;
 
-  //Uso el token para manipular el estado de logueo y poder actualizar los componentes que necesiten luego de hacer el login
   useEffect(() => {
-    //si el token ya existe actualizo el estado
-    if (token) {
+    if (authToken) {
+      setToken(authToken);
       setLoggedIn(true);
+      axios.defaults.headers.common["Authorization"] = "Bearer " + authToken;
+      localStorage.setItem('token', authToken);
+    } else {
+      delete axios.defaults.headers.common["Authorization"];
+      localStorage.removeItem('token');
+      setLoggedIn(false);
     }
-    //con el token de la URL actualizo el estado
-    if (urlToken) {
-      setToken(urlToken);
-      setLoggedIn(true);
-      localStorage.setItem("token", urlToken);
-      //quito el token de la URL por seguridad
-      window.history.replaceState(null, "", window.location.pathname);
-    } else if (savedToken) {
-      setToken(savedToken);
-      setLoggedIn(true);
-    }
-  }, []);
+  }, [authToken]);
 
   //TRAIGO LA API DE SERVICIOS
   const [servicios, setServicios] = useState([]);
+  //creo el estado srvicioFiltrados en esta linea para poder usarlo en el useEffect que setea los servicios para que traiga la lista de servicios con el stado disponible actualizado
+  const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
 
   useEffect(() => {
     axios
@@ -49,7 +48,7 @@ export const ContextProvider = ({ children }) => {
       .catch((error) => {
         console.error("Error al obtener servicios:", error);
       });
-  }, []);
+  }, [serviciosFiltrados]);
 
   //TRAIGO LA API DE USER/:ID
   const [usuario, setUsuario] = useState([]);
@@ -70,7 +69,7 @@ export const ContextProvider = ({ children }) => {
               },
             }
           );
-          setUsuario([response.data]);
+          setUsuario(response.data);
         } else {
           console.error("Token o usuario ID no disponibles");
         }
@@ -91,7 +90,7 @@ export const ContextProvider = ({ children }) => {
   const [busqueda, setBusqueda] = useState("");
   const [selectedFecha, setSelectedFecha] = useState("");
   const [selectedHora, setSelectedHora] = useState("");
-  const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
+  //const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
 
   const handleSelectedFecha = (e) => {
     const selectedFecha = e.target.value;
@@ -110,7 +109,7 @@ export const ContextProvider = ({ children }) => {
   const clearFilters = () => {
     setSelectedFecha("");
     setSelectedHora("");
-    setBusqueda("")
+    setBusqueda("");
   };
 
   useEffect(() => {
@@ -211,7 +210,8 @@ export const ContextProvider = ({ children }) => {
         navigate,
         servicios,
         usuario,
-        clearFilters
+        clearFilters,
+        authToken
       }}
     >
       {children}

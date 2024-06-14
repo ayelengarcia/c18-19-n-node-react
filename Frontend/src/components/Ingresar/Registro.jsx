@@ -90,6 +90,10 @@ function Registro() {
               {...register("telefono", {
                 required: { value: true, message: "Teléfono requerido" },
                 maxLength: { value: 20, message: "Máximo 20 dígitos" },
+                pattern: {
+                  value: /^(?:(?:00)?\+?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/i,
+                  message: "El número de teléfono no es válido",
+                },
               })}
             />
             {errors.telefono && <p className={styles.msgError}>{errors.telefono.message}</p>}
@@ -121,7 +125,7 @@ function Registro() {
               required: { value: true, message: "Contraseña requerida" },
               pattern: {
                 value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-                message: "Entre 8 y 16 caracteres, al menos una Mayús y una Minús",
+                message: "Entre 8 y 16 caracteres, al menos una mayúscula y una minúscula",
               },
             })}
           />

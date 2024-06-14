@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1, "imgUrl": "/img-eventos.png"
+    },
+    {
+      "id": 2, "imgUrl": "/img-oficinas.png"
+    },
+    {
+      "id": 3, "imgUrl": "/img-salas.png"
+    },
+    {
+      "id": 4, "imgUrl": "/servicios-salas.webp"
+    },
+    {
+      "id": 5, "imgUrl": "/servicios-eventos.webp"
+    }
+]

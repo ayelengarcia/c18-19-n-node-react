@@ -1,7 +1,15 @@
-import React from 'react'
+import styles from "./panel.module.css"
+import NavVertical from "./components/navVertical";
+import UsuarioPanel from "./UsuarioPanel.jsx";
+
+
 
 export const Usuario = () => {
+
   return (
-    <div>Usuario</div>
-  )
-}
+    <div className={styles.container}>
+      <NavVertical />
+      <UsuarioPanel />
+    </div>
+  );
+};

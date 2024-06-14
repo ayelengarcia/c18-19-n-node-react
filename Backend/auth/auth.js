@@ -91,7 +91,7 @@ passport.use(
             message: "Ingresaste correctamente a tu OfiFlex!",
           });
         }
-        //verifico si el usuario que se inteta registrar ya exite con su mail en la db
+        //verifico si el usuario que se inteta registrar ya existe con su mail en la db
         user = await User.findOne({ email: profile.emails[0].value });
         //si ya existe actualizo el google id en la db
 
@@ -107,7 +107,7 @@ passport.use(
           email: profile.emails[0].value,
           telefono: profile.phoneNumbers ? profile.phoneNumbers[0].value : "",
         });
-
+        
         await newUser.save();
         return done(null, newUser);
       } catch (error) {
