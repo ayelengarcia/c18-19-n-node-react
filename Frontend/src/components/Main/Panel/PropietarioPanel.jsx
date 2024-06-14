@@ -19,8 +19,9 @@ const PropietarioPanel = () => {
 
       <div className={styles.container_servicios}>
         <h2 className={styles.title}>Tus servicios</h2>
-        {serviciosCreados.map(servicio => (
+        {serviciosCreados.map((servicio,index) => (
           <CardServicio
+          key={index}
           imagen={servicio.imagen}
           titulo={servicio.titulo}
           fecha={servicio.fecha}
