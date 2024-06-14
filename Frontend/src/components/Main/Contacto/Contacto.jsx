@@ -35,8 +35,8 @@ const Contacto = () => {
     <div className={styles.container}>
       <div className={styles.container_titulo}>
         <h1 className={styles.title}>¡Comunícate con Ofiflex!</h1>
-        <p className={styles.subtitle}>¿Tienes alguna duda o inquietud?</p>
-        <p className={styles.subtitle}>Completa el formulario a continuación y estaremos encantados de asistirte.</p>
+        <p className={styles.subtitle}>¿Tienes alguna duda o inquietud?. Completa el formulario</p>
+        <p className={styles.subtitle}>a continuación y estaremos encantados de asistirte.</p>
       </div>
 
       <form method="POST" onSubmit={handleSubmit(onSubmit)} className={styles.content_form}>

@@ -7,10 +7,10 @@ function PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLo
   const { authToken } = useContext(Context);
 
   const [postData, setPostData] = useState({
-    servicioId: '',
-    usuarioId: '',
-    usuarioReserva: '',
-    servicioReservado: '',
+    servicioId: "",
+    usuarioId: "",
+    usuarioReserva: "",
+    servicioReservado: ""
   });
   useEffect(() => {
     if (servicio && usuario) {
@@ -20,13 +20,14 @@ function PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLo
         servicioId: servicio._id,
         usuarioId: usuario._id,
         usuarioReserva: usuario.nombre,
-        servicioReservado: servicio.titulo,
+        servicioReservado: servicio.titulo
       });
     }
   }, [servicio, usuario]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     axios.post("http://127.0.0.1:3000/reservas", postData, {
       headers: {
         authorization: 'Bearer ' + authToken

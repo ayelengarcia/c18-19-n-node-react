@@ -5,9 +5,6 @@ import { Propietario } from './Propietario';
 import Context from '../../../context/context';
 import styles from "./panel.module.css"
 
-
-//TRAER COMPONTENTE NAV VERTICAL (AYE)
-
 export const Panel = () => {
   const { usuario } = useContext(Context);
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState} from 'react';
 import styles from "./Header.module.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 
 const User = ({ handleLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const [dropdownAbierto, setDropdownAbierto] = useState(false);
 
   const toggleDropdown = () => {
@@ -16,7 +15,7 @@ const User = ({ handleLogout }) => {
 
   const closeDropdown = () => {
     setIsOpen(false);
-    setDropdownAbierto(!dropdownAbierto);
+    setDropdownAbierto(false);
   };
 
   return (
