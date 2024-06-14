@@ -67,6 +67,16 @@ const obtenerServicioPorCategoria = async (req, res) => {
     }
 }
 
+const obtenerServicioPorId = async (req, res) => {
+  const servicio = await Servicio.findOne({ _id: req.params.id }).exec()
+
+  if (servicio) {
+      res.json(servicio)
+  } else {
+      res.status(404).json({ error: 'Servicio no encontrado' })
+  }
+}
+
 const eliminarServicio = async (req, res) => {
     const servicioAEliminar = await Servicio.deleteOne({ servicioId: req.params.servicioId }).exec()
 
@@ -81,5 +91,6 @@ module.exports = {
     crearServicio,
     obtenerServicios,
     obtenerServicioPorCategoria,
+    obtenerServicioPorId,
     eliminarServicio
 }
