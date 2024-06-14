@@ -38,7 +38,7 @@ function Registro() {
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div className={styles.container_datos}>
 
-          <div>
+          <div className={styles.width_100}>
             <input
               type="text"
               placeholder="Nombre*"
@@ -51,7 +51,7 @@ function Registro() {
             {errors.nombre && <p className={styles.msgError}>{errors.nombre.message}</p>}
           </div>
 
-          <div>
+          <div className={styles.width_100}>
             <input
               type="text"
               placeholder="Apellido*"
@@ -68,7 +68,7 @@ function Registro() {
         </div>
 
         <div className={styles.container_datos}>
-          <div>
+          <div className={styles.width_100}>
             <input
               type="number"
               placeholder="Edad*"
@@ -82,7 +82,7 @@ function Registro() {
             {errors.edad && <p className={styles.msgError}>{errors.edad.message}</p>}
           </div>
 
-          <div>
+          <div className={styles.width_100}>
             <input
               type="number"
               placeholder="Teléfono*"

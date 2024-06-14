@@ -54,6 +54,10 @@
     gap: 10px;
 }
 
+.width_100{
+  width: 100%;
+}
+
 .standar{
     padding: 10px 15px;
     width: 100%;
