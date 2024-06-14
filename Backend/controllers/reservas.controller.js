@@ -19,23 +19,25 @@ const crearReserva = async (req, res) => {
         // Actualizar estado del servicio a no disponible y obtener el servicio actualizado
         const servicio = await Servicio.findByIdAndUpdate(servicioId, { disponible: false }, { new: true });
 
+        // Crear reserva nueva
+        const nuevaReserva = new Reserva({ servicioId, usuarioId, usuarioReserva, servicioReservado });
+        await nuevaReserva.save();
+        console.log('Has hecho la reserva!')
+        
         res.status(201).json({
             reservaId: nuevaReserva._id,
             servicioActualizado: servicio,
             mensaje: 'Reserva creada y estado del servicio actualizado correctamente'
         });
 
-        // Crear reserva nueva
-        const nuevaReserva = new Reserva({ servicioId, usuarioId, usuarioReserva, servicioReservado });
-        await nuevaReserva.save();
-        console.log('Has hecho la reserva!')
+        
 
         // Agregar la nueva reserva a las citas del usuario
         usuarioAEditar.listaReservas.push(nuevaReserva);
         await usuarioAEditar.save();
 
         // Devolver la nueva reserva
-        res.status(201).json(nuevaReserva);
+        //res.status(201).json(nuevaReserva);
     } catch (error) {
         console.error('Error al crear reserva:', error);
         res.status(500).json({ error: 'Error al procesar la reserva' });
