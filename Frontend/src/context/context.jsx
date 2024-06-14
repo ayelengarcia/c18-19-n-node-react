@@ -36,6 +36,8 @@ export const ContextProvider = ({ children }) => {
 
   //TRAIGO LA API DE SERVICIOS
   const [servicios, setServicios] = useState([]);
+  //creo el estado srvicioFiltrados en esta linea para poder usarlo en el useEffect que setea los servicios para que traiga la lista de servicios con el stado disponible actualizado
+  const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
 
   useEffect(() => {
     axios
@@ -46,7 +48,7 @@ export const ContextProvider = ({ children }) => {
       .catch((error) => {
         console.error("Error al obtener servicios:", error);
       });
-  }, []);
+  }, [serviciosFiltrados]);
 
   //TRAIGO LA API DE USER/:ID
   const [usuario, setUsuario] = useState([]);
@@ -88,7 +90,7 @@ export const ContextProvider = ({ children }) => {
   const [busqueda, setBusqueda] = useState("");
   const [selectedFecha, setSelectedFecha] = useState("");
   const [selectedHora, setSelectedHora] = useState("");
-  const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
+  //const [serviciosFiltrados, setServiciosFiltrados] = useState([]);
 
   const handleSelectedFecha = (e) => {
     const selectedFecha = e.target.value;
