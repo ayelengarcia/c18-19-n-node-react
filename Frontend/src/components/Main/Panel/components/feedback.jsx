@@ -9,7 +9,6 @@ const feedback = ({ id }) => {
   const [feedback, setFeedback] = useState("");
   const [reserva, setReserva] = useState(null);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,8 +26,6 @@ const feedback = ({ id }) => {
 
     fetchData();
   }, [id, authToken]);
-  
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +41,7 @@ const feedback = ({ id }) => {
         }
       );
       console.log("Respuesta del servidor:", response.data);
-      setFeedback(response.data.feedback || "");
+      setReserva((prev) => ({ ...prev, feedback: response.data.feedback || feedback }));
     } catch (error) {
       console.error("Error al enviar el feedback:", error);
     }
@@ -66,6 +63,7 @@ const feedback = ({ id }) => {
       ) : (
           <div className={styles.container_form}>
             <textarea
+              id='output'
               className={styles.textarea_feedback}
               placeholder="Coméntanos..."
               name="feedback"
