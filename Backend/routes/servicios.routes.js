@@ -11,6 +11,7 @@ servicioRouter.post('/', verifyToken, checkRole(["propietario"]), servicioContro
 //Quito verifyToken para que sean rutas publicas
 servicioRouter.get('/', servicioController.obtenerServicios)
 servicioRouter.get('/:categoria', servicioController.obtenerServicioPorCategoria)
+servicioRouter.get('/id/:id', servicioController.obtenerServicioPorId)
 
 
 //El propietario solo deberia poder eliminas sus productos. //El admin todos
