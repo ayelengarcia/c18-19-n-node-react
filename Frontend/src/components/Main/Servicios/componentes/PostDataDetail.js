@@ -4,7 +4,7 @@ import Context from "../../../../context/context.jsx";
 
 function PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLoading }) {
 
-  const { authToken } = useContext(Context);
+  const { authToken, msgError } = useContext(Context);
 
   const [postData, setPostData] = useState({
     servicioId: "",
@@ -43,6 +43,7 @@ function PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLo
       })
       .catch(error => {
         console.error('Error al enviar la solicitud:', error);
+        msgError("Necesitas registrarte para eso");
       })
       .finally(() => {
         setIsLoading(false);

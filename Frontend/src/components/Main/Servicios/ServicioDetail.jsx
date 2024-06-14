@@ -6,6 +6,7 @@ import PostDataDetail from './componentes/PostDataDetail.js';
 import { BtnBack } from './componentes/BtnBack.jsx';
 import { MsjExito } from './componentes/MsjExito.jsx';
 import { Button, Stack } from '@chakra-ui/react'
+import { ToastContainer } from "react-toastify";
 
 const ServicioDetail = () => {
   const { servicios, usuario } = useContext(Context);
@@ -63,6 +64,7 @@ const ServicioDetail = () => {
       ) : (
         <MsjExito usuario={usuario} servicio={servicio} reservaId={reservaId} />
       )}
+      <ToastContainer />
     </>
   );
 };
