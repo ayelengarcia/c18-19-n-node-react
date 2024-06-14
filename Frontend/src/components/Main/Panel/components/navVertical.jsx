@@ -11,7 +11,14 @@ const NavVertical = () => {
     <div className={styles.container_nav}>
      
       <ImageUploader />
-      <div>{usuario.nombre}</div>
+
+      <div className={styles.container_more_info}>
+        <div className={styles.more_info}>
+          <div><b>Email:</b> {usuario.email}</div>
+          <div><b>Edad:</b> {usuario.edad}</div>
+          <div><b>Teléfono:</b> {usuario.telefono}</div>
+        </div>
+      </div>
     </div>
   );
 };
