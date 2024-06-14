@@ -21,6 +21,7 @@ const ServicioForm = () => {
             fecha: form.get('fecha'),
             hora: form.get('hora'),
             categoria: form.get('categoria'),
+            usuarioId: usuario._id,
         };
 
         try {
