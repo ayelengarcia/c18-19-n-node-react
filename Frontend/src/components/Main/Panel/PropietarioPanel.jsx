@@ -11,7 +11,7 @@ const PropietarioPanel = () => {
 
   return (
     <div className={`${styles.container_prop_panel} ${styles.container_gralServicios}`}>
-      {console.log(serviciosCreados)}
+      {/* {console.log(serviciosCreados)} */}
       <div className={styles.container_servicios}>
         <h2 className={styles.title}>Crear</h2>
         <PostServicio />
@@ -19,13 +19,16 @@ const PropietarioPanel = () => {
 
       <div className={styles.container_servicios}>
         <h2 className={styles.title}>Tus servicios</h2>
-        <CardServicio
-          imagen={serviciosCreados.imagen}
-          titulo={serviciosCreados.titulo}
-          fecha={serviciosCreados.fecha}
-          hora={serviciosCreados.hora}
-          categoria={serviciosCreados.categoria}
+        {serviciosCreados.map(servicio => (
+          <CardServicio
+          imagen={servicio.imagen}
+          titulo={servicio.titulo}
+          fecha={servicio.fecha}
+          hora={servicio.hora}
+          categoria={servicio.categoria}
         />
+        ))}
+        
       </div>
     </div>
   )
