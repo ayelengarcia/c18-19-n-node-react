@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nombre": "Carmen Ayala",
+        "descripcion": "Estuve en sus oficinas trabajando y debo decir que todo impecable y su Wifi era muy rápido",
+        "img": "/img-perfil-resena.png",
+        "fecha": "30/05/2024",
+        "puntuacion": "5"
+    },
+    {
+        "id": 2,
+        "nombre": "Juan Pedreira",
+        "descripcion": "Estuve en sus oficinas trabajando y debo decir que todo impecable y su Wifi era muy rápido",
+        "img": "/img-perfil-resena.png",
+        "fecha": "25/05/2024",
+        "puntuacion": "4.5"
+    },
+    {
+        "id": 3,
+        "nombre": "María Gutierrez",
+        "descripcion": "Estuve en sus oficinas trabajando y debo decir que todo impecable y su Wifi era muy rápido",
+        "img": "/img-perfil-resena.png",
+        "fecha": "22/05/2024",
+        "puntuacion": "4.2"
+    }
+]
