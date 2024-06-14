@@ -1,5 +1,6 @@
 const Reserva = require("../models/reservas");
 const Usuario = require("../models/user");
+const Servicio = require("../models/servicios")
 
 // TODO: cambiar el estado de disponible de los servicios de true a false;
 // crear la reserva:
@@ -68,6 +69,28 @@ const obtenerReservasPorId = async (req, res) => {
   }
 };
 
+const feedBack = async (req, res) => {
+  try {
+    const reservaRealizada = await Reserva.findOne({
+      reservaId: req.params.reservaId,
+    }).exec();
+
+    if (!reservaRealizada) {
+      return res.status(404).json({ mensaje: "Reserva no encontrada" });
+    }
+
+    const nuevoFeedback = req.body.feedback;
+
+    reservaRealizada.feedback = nuevoFeedback;
+    await reservaRealizada.save();
+
+    res.json(reservaRealizada);
+  } catch (error) {
+    console.error("Error al devolver feedback de la reserva", error);
+    res.status(500).json({ mensaje: "Error interno del servidor" });
+  }
+};
+
 /* const cancelarReserva = async (req, res) => {
     const ReservaACancelar = await Reserva.findOne({ reservaId: req.params.reservaId }).exec()
 
@@ -80,30 +103,6 @@ const obtenerReservasPorId = async (req, res) => {
         return res.status(200).json({ error: 'Reserva cancelada correctamente' })
     }
 } */
-
-const feedBack = async (req, res) => {
-  const reservaRealizada = await Reserva.findOne({
-    reservaId: req.params.reservaId,
-  }).exec();
-
-  try {
-    if (!reservaRealizada) {
-      return res.status(404).json({ mensaje: "Reserva no encontrada" });
-    }
-
-    nuevoFeedback = `Feedback de la reserva (${reservaRealizada.reservaId}):\n`;
-    nuevoFeedback += `Usuario: ${reservaRealizada.usuarioReserva}\n`;
-    nuevoFeedback += `Detalles de la reserva: ${req.body.feedback}\n`;
-
-    reservaRealizada.feedback = nuevoFeedback;
-    await reservaRealizada.save();
-
-    res.json(reservaRealizada);
-  } catch (error) {
-    console.error("Error al devolver feedback de la reserva", error);
-    res.status(500).json({ mensaje: "Error interno del servidor" });
-  }
-};
 
 module.exports = {
   crearReserva,
