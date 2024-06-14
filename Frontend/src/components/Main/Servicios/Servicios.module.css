@@ -91,7 +91,6 @@
 }
 
 .banner_categoria{
-  background-image: url("/banner-categoria.png");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 450px;
@@ -100,6 +99,15 @@
   justify-content: center;
   align-items: center;
   margin: 10px 0px 20px 0px;
+}
+.banner_oficinas{
+  background-image: url("/banner-oficinas.png");
+}
+.banner_salas{
+  background-image: url("/banner-salas.png");
+}
+.banner_eventos{
+  background-image: url("/banner-eventos.png");
 }
 
 .title_categoria{
