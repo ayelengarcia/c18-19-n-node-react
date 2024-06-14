@@ -2,7 +2,7 @@ import styles from "../panel.module.css";
 import { BiAlarm } from "react-icons/bi";
 import { BiCalendarAlt } from "react-icons/bi";
 
-const cardReserva = ({imagen, titulo, fecha, hora, categoria}) => {
+const cardReserva = ({ imagen, titulo, fecha, hora, categoria }) => {
   return (
     <div className={styles.container_cardReserva}>
       <img className={styles.img_reserva} src={imagen} alt={titulo} />
@@ -13,11 +13,14 @@ const cardReserva = ({imagen, titulo, fecha, hora, categoria}) => {
           <p className={styles.p_fecha}><BiCalendarAlt />{fecha}</p>
           <p className={styles.p_fecha}><BiAlarm />{hora}hs</p>
         </div>
-        <p>{categoria}</p>
-      </div>
 
+        <div>
+          <p>{categoria}</p>
+          <button>Calificar</button>
+        </div>
       </div>
-  )
-}
+    </div>
+  );
+};
 
-export default cardReserva
+export default cardReserva;

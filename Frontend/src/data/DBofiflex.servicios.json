@@ -1,0 +1,384 @@
+[{
+  "_id": {
+    "$oid": "66646f772aa9bfa61927609a"
+  },
+  "servicioID": {
+    "$oid": "66646f772aa9bfa619276099"
+  },
+  "titulo": "Central Room",
+  "descripcion": "Sala equipada con proyector y pizarra blanca.",
+  "imagen": "/salas/sala1.png",
+  "disponible": true,
+  "fecha": "15/06/2024",
+  "hora": "17:00-18:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66646fb12aa9bfa61927609f"
+  },
+  "servicioID": {
+    "$oid": "66646fb12aa9bfa61927609e"
+  },
+  "titulo": "Sala Buenos Aires",
+  "descripcion": "Sala equipada con proyector y pizarra blanca.",
+  "imagen": "/salas/sala2.png",
+  "disponible": true,
+  "fecha": "16/06/2024",
+  "hora": "17:00-18:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66646fbd2aa9bfa6192760a4"
+  },
+  "servicioID": {
+    "$oid": "66646fbd2aa9bfa6192760a3"
+  },
+  "titulo": "Galileo Space Room",
+  "descripcion": "Sala equipada con proyector y pizarra blanca.",
+  "imagen": "/salas/sala3.png",
+  "disponible": true,
+  "fecha": "26/06/2024",
+  "hora": "18:00-21:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66646fe52f10ea341a94ba19"
+  },
+  "servicioID": {
+    "$oid": "66646fe52f10ea341a94ba18"
+  },
+  "titulo": "Salón Atlántico",
+  "descripcion": "Sala equipada con proyector y pizarra blanca.",
+  "imagen": "/salas/sala4.png",
+  "disponible": true,
+  "fecha": "26/06/2024",
+  "hora": "18:00-19:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66646ffc2f10ea341a94ba1e"
+  },
+  "servicioID": {
+    "$oid": "66646ffc2f10ea341a94ba1d"
+  },
+  "titulo": "Horizon Room",
+  "descripcion": "Sala equipada con proyector y pizarra blanca.",
+  "imagen": "/salas/sala5.png",
+  "disponible": true,
+  "fecha": "02/07/2024",
+  "hora": "18:00-19:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666470112f10ea341a94ba23"
+  },
+  "servicioID": {
+    "$oid": "666470112f10ea341a94ba22"
+  },
+  "titulo": "Sala San Francisco",
+  "descripcion": "Sala equipada con proyector y pizarra blanca.",
+  "imagen": "/salas/sala6.png",
+  "disponible": true,
+  "fecha": "05/07/2024",
+  "hora": "08:00-10:00",
+  "categoria": "Salas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666470972f10ea341a94ba28"
+  },
+  "servicioID": {
+    "$oid": "666470972f10ea341a94ba27"
+  },
+  "titulo": "Arca Hub",
+  "descripcion": "Oficina equipada con proyector y aire.",
+  "imagen": "/oficinas/oficina1.png",
+  "disponible": false,
+  "fecha": "05/07/2024",
+  "hora": "08:00-10:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666470a72f10ea341a94ba2d"
+  },
+  "servicioID": {
+    "$oid": "666470a72f10ea341a94ba2c"
+  },
+  "titulo": "Insta Office",
+  "descripcion": "Oficina equipada con proyector y aire.",
+  "imagen": "/oficinas/oficina2.png",
+  "disponible": true,
+  "fecha": "16/07/2024",
+  "hora": "08:00-10:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666470b52f10ea341a94ba32"
+  },
+  "servicioID": {
+    "$oid": "666470b52f10ea341a94ba31"
+  },
+  "titulo": "Aurora Office",
+  "descripcion": "Oficina equipada con proyector y aire.",
+  "imagen": "/oficinas/oficina3.png",
+  "disponible": true,
+  "fecha": "16/07/2024",
+  "hora": "15:00-17:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666470ba2f10ea341a94ba37"
+  },
+  "servicioID": {
+    "$oid": "666470ba2f10ea341a94ba36"
+  },
+  "titulo": "Harmony Oficina",
+  "descripcion": "Oficina equipada con proyector y aire.",
+  "imagen": "/oficinas/oficina4.png",
+  "disponible": true,
+  "fecha": "16/06/2024",
+  "hora": "15:00-17:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666470d22f10ea341a94ba3c"
+  },
+  "servicioID": {
+    "$oid": "666470d22f10ea341a94ba3b"
+  },
+  "titulo": "Innovation Hub",
+  "descripcion": "Oficina equipada con proyector y aire.",
+  "imagen": "/oficinas/oficina5.png",
+  "disponible": true,
+  "fecha": "27/06/2024",
+  "hora": "10:00-12:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666470d72f10ea341a94ba41"
+  },
+  "servicioID": {
+    "$oid": "666470d72f10ea341a94ba40"
+  },
+  "titulo": "Oficina Vanguardia",
+  "descripcion": "Oficina equipada con proyector y aire.",
+  "imagen": "/oficinas/oficina6.png",
+  "disponible": true,
+  "fecha": "27/08/2024",
+  "hora": "10:00-12:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666470e52f10ea341a94ba46"
+  },
+  "servicioID": {
+    "$oid": "666470e52f10ea341a94ba45"
+  },
+  "titulo": "Oficina Aurora",
+  "descripcion": "Oficina equipada con proyector y aire.",
+  "imagen": "/oficinas/oficina3.png",
+  "disponible": true,
+  "fecha": "05/07/2024",
+  "hora": "12:00-14:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666470f82f10ea341a94ba4b"
+  },
+  "servicioID": {
+    "$oid": "666470f82f10ea341a94ba4a"
+  },
+  "titulo": "Insta Office",
+  "descripcion": "Oficina equipada con proyector y aire.",
+  "imagen": "/oficinas/oficina2.png",
+  "disponible": true,
+  "fecha": "14/07/2024",
+  "hora": "17:00-19:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6664711f2f10ea341a94ba50"
+  },
+  "servicioID": {
+    "$oid": "6664711f2f10ea341a94ba4f"
+  },
+  "titulo": "Harmony Oficina",
+  "descripcion": "Oficina equipada con proyector y aire.",
+  "imagen": "/oficinas/oficina4.png",
+  "disponible": true,
+  "fecha": "14/07/2024",
+  "hora": "10:00-11:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666471522f10ea341a94ba55"
+  },
+  "servicioID": {
+    "$oid": "666471522f10ea341a94ba54"
+  },
+  "titulo": "Auditorio Alpha",
+  "descripcion": "Auditorio de eventos equipado con palco, proyector y aire.",
+  "imagen": "/eventos/evento1.png",
+  "disponible": true,
+  "fecha": "14/07/2024",
+  "hora": "10:00-11:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666471662f10ea341a94ba5a"
+  },
+  "servicioID": {
+    "$oid": "666471662f10ea341a94ba59"
+  },
+  "titulo": "Stellar Event Salón",
+  "descripcion": "Auditorio de eventos equipado con palco, proyector y aire.",
+  "imagen": "/eventos/evento2.png",
+  "disponible": true,
+  "fecha": "18/06/2024",
+  "hora": "15:00-18:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666471f3066ccbbc0bdeb55a"
+  },
+  "servicioID": {
+    "$oid": "666471f3066ccbbc0bdeb559"
+  },
+  "titulo": "Epic Event Auditorio",
+  "descripcion": "Auditorio de eventos equipado con palco, proyector y aire.",
+  "imagen": "/eventos/evento3.png",
+  "disponible": true,
+  "fecha": "21/08/2024",
+  "hora": "21:00-00:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66647219066ccbbc0bdeb55f"
+  },
+  "servicioID": {
+    "$oid": "66647219066ccbbc0bdeb55e"
+  },
+  "titulo": "Vanguard Event",
+  "descripcion": "Auditorio de eventos equipado con palco, proyector y aire.",
+  "imagen": "/eventos/evento4.png",
+  "disponible": true,
+  "fecha": "10/07/2024",
+  "hora": "17:00-21:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66647226066ccbbc0bdeb564"
+  },
+  "servicioID": {
+    "$oid": "66647226066ccbbc0bdeb563"
+  },
+  "titulo": "Auditorio Oasis",
+  "descripcion": "Auditorio de eventos equipado con palco, proyector y aire.",
+  "imagen": "/eventos/evento5.png",
+  "disponible": true,
+  "fecha": "10/07/2024",
+  "hora": "21:00-23:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66661e092a6f4a750da7c946"
+  },
+  "servicioID": {
+    "$oid": "66647226066ccbbc0bdeb567"
+  },
+  "titulo": "Eventos Némesis",
+  "descripcion": "Auditorio de eventos equipado con palco, proyector y aire.",
+  "imagen": "/eventos/evento6.png",
+  "disponible": true,
+  "fecha": "10/07/2024",
+  "hora": "21:00-23:00",
+  "categoria": "Eventos",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666b9e14af466ce6b5121034"
+  },
+  "servicioID": {
+    "$oid": "666b9e14af466ce6b5121033"
+  },
+  "titulo": "PEpito",
+  "descripcion": "asdasdasdasdasdasdasdasdas",
+  "imagen": "https://mobbyt.com/media/gallery/6e6bfa4a9fdd3d1f1e1835107f362153/d383670b_2021-11-29-mobbyt.jpg",
+  "disponible": true,
+  "fecha": "02/05/2025",
+  "hora": "19:00-20:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666ba0b7af466ce6b5121309"
+  },
+  "servicioID": {
+    "$oid": "666ba0b7af466ce6b5121308"
+  },
+  "titulo": "PEpito",
+  "descripcion": "asdasdasdasdasdasdasdasdas",
+  "imagen": "https://mobbyt.com/media/gallery/6e6bfa4a9fdd3d1f1e1835107f362153/d383670b_2021-11-29-mobbyt.jpg",
+  "disponible": true,
+  "fecha": "02/05/2025",
+  "hora": "19:00-20:00",
+  "categoria": "Oficinas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666ba120af466ce6b512130e"
+  },
+  "servicioID": {
+    "$oid": "666ba120af466ce6b512130d"
+  },
+  "titulo": "PEpito",
+  "descripcion": "asdasdasdasdasdasdasdasdas",
+  "imagen": "https://mobbyt.com/media/gallery/6e6bfa4a9fdd3d1f1e1835107f362153/d383670b_2021-11-29-mobbyt.jpg",
+  "disponible": true,
+  "fecha": "02/05/2025",
+  "hora": "19:00-20:00",
+  "categoria": "Oficinas",
+  "__v": 0
+}]

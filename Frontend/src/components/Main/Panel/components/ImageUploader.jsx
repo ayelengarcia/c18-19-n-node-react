@@ -12,9 +12,9 @@ const ImageUploader = () => {
     return <div>Loading...</div>;
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const file = inputFile.current.files[0];
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+
     const data = {
       avatar: file,
       token: authToken,
@@ -35,25 +35,37 @@ const ImageUploader = () => {
     }
   };
 
+  const handleUploadClick = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    inputFile.current.click();
+  };
+
   return (
-    <>
+    <div className={styles.container_portada_perfil}>
+
       {imageUrl ? (
-        <>
+        <div className={styles.container_img_perfil}>
           <img src={imageUrl} alt="Uploaded avatar" className={styles.img_user} />
-        </>
+        </div>
       ) : (
-        <>
+        <div className={styles.container_img_perfil}>
           <img src="/user-profile-unloggin.png" alt="Null avatar" className={styles.img_user} />
-        </>
+        </div>
       )}
 
-      <form id="uploadForm" onSubmit={handleSubmit}>
-        <input type="file" ref={inputFile} name="avatar" />
-        <br />
-        <br />
-        <input type="submit" value="Cargar imagen" />
-      </form>
-    </>
+
+      <div className={styles.custom_file_upload}>
+        <h2 className={styles.text_name}>{usuario.nombre}</h2>
+        <p>Perfil de {usuario.rol}</p>
+        <label htmlFor="file-input" className={styles.file_label} onClick={handleUploadClick}>
+          Subir archivo
+        </label>
+        <input id="file-input" type="file" ref={inputFile} style={{ display: 'none' }} onChange={handleFileChange} />
+      </div>
+
+      
+    </div>
   );
 };
 
