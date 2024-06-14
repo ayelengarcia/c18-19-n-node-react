@@ -29,7 +29,7 @@ const eliminarUsuario = async (req, res) => {
 
 // TODO: nombre,apellido, edad y telefono NADA MAS.
 const editarUsuario = async (req, res) => {
-    const usuarioAEditar = await Usuario.findOne({ usuarioId: req.params.usuarioId }).exec()
+    const usuarioAEditar = await Usuario.findOne({ _id: req.params.usuarioId }).exec()
     const updateParams = req.body;
 
     try {

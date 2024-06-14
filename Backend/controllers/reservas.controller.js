@@ -1,5 +1,6 @@
 const Reserva = require("../models/reservas");
 const Usuario = require("../models/user");
+const Servicio = require("../models/servicios")
 
 // TODO: cambiar el estado de disponible de los servicios de true a false;
 // crear la reserva:
@@ -14,21 +15,28 @@ const crearReserva = async (req, res) => {
       });
   }
 
-  // Agarro al usuario para agregar la reserva a su perfil:
-  const usuarioAEditar = await Usuario.findOne({ usuarioId: usuarioId }).exec();
+    try {
+        // Buscar el usuario que realiza la reserva
+        const usuarioAEditar = await Usuario.findOne({ _id: usuarioId });
+        if (!usuarioAEditar) {
+            return res.status(400).json({ error: 'No se encontró al usuario' });
+        }
 
-  if (!usuarioAEditar) {
-    return res.status(400).json({ error: "No se encontró al usuario" });
-  }
+        // Actualizar estado del servicio a no disponible y obtener el servicio actualizado
+        const servicio = await Servicio.findByIdAndUpdate(servicioId, { disponible: false }, { new: true });
 
-  // Crear reserva nueva:
-  const nuevaReserva = new Reserva({
-    servicioId: servicioId,
-    usuarioId: usuarioId,
-    usuarioReserva: usuarioReserva,
-    servicioReservado: servicioReservado,
-  });
-  await nuevaReserva.save();
+        // Crear reserva nueva
+        const nuevaReserva = new Reserva({ servicioId, usuarioId, usuarioReserva, servicioReservado });
+        await nuevaReserva.save();
+        console.log('Has hecho la reserva!')
+        
+        res.status(201).json({
+            reservaId: nuevaReserva._id,
+            servicioActualizado: servicio,
+            mensaje: 'Reserva creada y estado del servicio actualizado correctamente'
+        });
+
+        
 
   // Agrego la nueva reserva las citas de ambos:
   usuarioAEditar.listaReservas.push(nuevaReserva);
@@ -36,8 +44,12 @@ const crearReserva = async (req, res) => {
   // Guardo en la db los datos:
   await usuarioAEditar.save();
 
-  // Devuelvo la nueva reserva:
-  res.status(201).json(nuevaReserva);
+        // Devolver la nueva reserva
+        //res.status(201).json(nuevaReserva);
+    } catch (error) {
+        console.error('Error al crear reserva:', error);
+        res.status(500).json({ error: 'Error al procesar la reserva' });
+    }
 };
 
 const obtenerReservas = async (req, res) => {

@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { BiAlarm } from "react-icons/bi";
 import { BiCalendarAlt } from "react-icons/bi";
 
-const ServicioCard = ({ id, titulo, descripcion, imagen, fecha, hora, categoria }) => {
+const ServicioCard = ({ id, titulo, descripcion, imagen, fecha, hora, categoria, disponible }) => {
   return (
+    <>
+      {disponible ?
       <div className={styles.card} key={id}>
         <Link className={styles.navlink} to={`/servicios/${categoria}/${id}`}>
         <img className={styles.img_serv} src={imagen} alt={titulo} />
@@ -20,10 +22,12 @@ const ServicioCard = ({ id, titulo, descripcion, imagen, fecha, hora, categoria 
           </div>
         </div>
         </Link>
-        <Link to={`/servicios/${categoria}/${id}`}>
+         <Link to={`/servicios/${categoria}/${id}`}>
           <button className={styles.btn}>Reservar</button>
-        </Link>
+        </Link>  
       </div>
+      : <></>}
+      </>
   );
 };
 
