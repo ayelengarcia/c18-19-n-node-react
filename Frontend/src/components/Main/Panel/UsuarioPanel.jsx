@@ -19,6 +19,7 @@ const UsuarioPanel = () => {
             return (
               <CardReserva
                 key={index}
+                id={reserva.reservaId}
                 imagen={servicioReservado.imagen}
                 titulo={servicioReservado.titulo}
                 fecha={servicioReservado.fecha}
