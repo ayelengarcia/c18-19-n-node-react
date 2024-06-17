@@ -6,7 +6,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 const Galeria = () => {
 
   return (
-    <div className={styles.main_container}>
+    <div className={styles.container}>
+      <div className={styles.main_container}>
       <div id="carouselExampleFade" className="carousel slide carousel-fade">
         <div className="carousel-inner">
 
@@ -46,6 +47,8 @@ const Galeria = () => {
         </button>
       </div>
     </div>
+    </div>
+    
   );
 };
 

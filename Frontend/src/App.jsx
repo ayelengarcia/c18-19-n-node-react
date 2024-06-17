@@ -5,11 +5,12 @@ import Footer from './components/Footer/Footer.jsx'
 import { ContextProvider } from './context/context.jsx'
 import Ingresar from "../src/components/Ingresar/Ingresar.jsx"
 import { Route, Routes } from "react-router-dom"
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 const App = () => {
   return (
     <ContextProvider>
-      
+      <ScrollToTop />
         <Routes>
           <Route path='/*' element={<>
             <Header />

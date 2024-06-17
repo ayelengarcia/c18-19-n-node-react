@@ -14,9 +14,9 @@ const Footer = () => {
         <Link className={styles.links} to={'/contacto'}>Contacto</Link>
       </div>
       <div className={styles.div}>
-        <Link className={styles.links} to={'/*'}>Oficinas</Link>
-        <Link className={styles.links} to={'/*'}>Sala de reuniones</Link>
-        <Link className={styles.links} to={'/*'}>Eventos</Link>
+        <Link className={styles.links} to={'/servicios/oficinas'}>Oficinas</Link>
+        <Link className={styles.links} to={'/servicios/salas'}>Sala de reuniones</Link>
+        <Link className={styles.links} to={'/servicios/eventos'}>Eventos</Link>
       </div>
       <div className={styles.div_icons}>
         <Link
