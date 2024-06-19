@@ -48,7 +48,7 @@ export const ContextProvider = ({ children }) => {
       .catch((error) => {
         console.error("Error al obtener servicios:", error);
       });
-  }, [serviciosFiltrados]);
+  }, []);
 
   //TRAIGO LA API DE USER/:ID
   const [usuario, setUsuario] = useState([]);
@@ -57,31 +57,37 @@ export const ContextProvider = ({ children }) => {
   const { decodedToken } = useJwt(authToken);
   const usuarioId = decodedToken?.user?._id;
 
-  useEffect(() => {
-    const fetchUsuario = async () => {
-      try {
-        if (authToken && usuarioId) {
-          const response = await axios.get(
-            `http://127.0.0.1:3000/user/${usuarioId}`,
-            {
-              headers: {
-                Authorization: authToken,
-              },
-            }
-          );
-          setUsuario(response.data);
-        } else {
-          console.error("Token o usuario ID no disponibles");
-        }
-      } catch (error) {
-        console.error("Error al obtener usuario:", error);
+  const fetchUsuario = async () => {
+    try {
+      if (authToken && usuarioId) {
+        const response = await axios.get(
+          `http://127.0.0.1:3000/user/${usuarioId}`,
+          {
+            headers: {
+              Authorization: authToken,
+            },
+          }
+        );
+        setUsuario(response.data);
+      } else {
+        console.error("Token o usuario ID no disponibles");
       }
-    };
+    } catch (error) {
+      console.error("Error al obtener usuario:", error);
+    }
+  };
 
+  useEffect(() => {
     if (authToken && usuarioId) {
       fetchUsuario();
     }
-  }, [authToken, usuarioId, usuario.listaReservas]);
+  }, [authToken, usuarioId]);
+
+  useEffect(() => {
+    if (usuario && usuario.listaReservas) {
+      fetchUsuario();
+    }
+  }, [usuario?.listaReservas]);
 
   //Instancia para Redirecciones
   const navigate = useNavigate();

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from '../ServicioDetail.module.css'
+import {NavLink} from 'react-router-dom'
 
 export const MsjExito = ({ servicio, usuario, reservaId }) => {
   return (
@@ -28,7 +29,11 @@ export const MsjExito = ({ servicio, usuario, reservaId }) => {
             <p className={styles.datos}><b>Enviamos los datos de tu reserva a tu casilla de correo electrónico.</b></p>
             <p className={styles.datos}><b>¡Muchas gracias!</b></p>
           </div>
-
+          
+          <NavLink to={'/panel'}>
+            Ir a mi perfil
+          </NavLink>
+          
         </div>
       }
 
