@@ -99,10 +99,28 @@ const eliminarServicio = async (req, res) => {
     }
 }
 
+const actualizarServicio = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const update = req.body;
+
+    const servicio = await Servicio.findByIdAndUpdate(id, update, { new: true });
+
+    if (!servicio) {
+      return res.status(404).json({ message: 'Servicio no encontrado' });
+    }
+
+    res.json(servicio);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al actualizar el servicio', error });
+  }
+};
+
 module.exports = {
     crearServicio,
     obtenerServicios,
     obtenerServicioPorCategoria,
     obtenerServicioPorId,
-    eliminarServicio
+    eliminarServicio,
+    actualizarServicio
 }

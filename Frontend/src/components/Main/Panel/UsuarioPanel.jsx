@@ -16,7 +16,7 @@ const UsuarioPanel = () => {
 
         {reservas.map((reserva, index) => {
           const servicioReservado = servicios.find(servicio => servicio._id.toString() === reserva.servicioId.toString());
-
+                    
           if (!servicioReservado) {
             // Si no se encuentra el servicio, omitir la reserva
             return null;

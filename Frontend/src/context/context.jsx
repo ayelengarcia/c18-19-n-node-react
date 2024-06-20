@@ -83,12 +83,6 @@ export const ContextProvider = ({ children }) => {
     }
   }, [authToken, usuarioId]);
 
-  useEffect(() => {
-    if (usuario && usuario.listaReservas) {
-      fetchUsuario();
-    }
-  }, [usuario?.listaReservas]);
-
   //Instancia para Redirecciones
   const navigate = useNavigate();
 
