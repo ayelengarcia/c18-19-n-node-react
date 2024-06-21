@@ -9,7 +9,7 @@ import { Button, Stack } from '@chakra-ui/react'
 import { ToastContainer } from "react-toastify";
 
 const ServicioDetail = () => {
-  const { servicios, usuario } = useContext(Context);
+  const { servicios, usuario, fetchUsuario } = useContext(Context);
   const { id } = useParams();
   const servicio = servicios.find((servicio) => servicio.servicioID === id);
 
@@ -17,7 +17,7 @@ const ServicioDetail = () => {
   const [reservaId, setReservaId] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const { handleSubmit } = PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLoading });
+  const { handleSubmit } = PostDataDetail({ servicio, usuario, fetchUsuario, setIsSuccess, setReservaId, setIsLoading });
 
   return (
     <>

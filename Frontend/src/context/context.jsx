@@ -210,6 +210,7 @@ export const ContextProvider = ({ children }) => {
         navigate,
         servicios,
         usuario,
+        fetchUsuario,
         clearFilters,
         authToken
       }}

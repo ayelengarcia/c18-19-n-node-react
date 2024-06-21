@@ -33,7 +33,7 @@ const CardReserva = ({ imagen, titulo, fecha, hora, categoria, id }) => {
       console.log('Usuario actualizado:', responseUsuario.data);
       
       // Actualizar la disponibilidad del servicio en el servidor
-      const responseServicio = await axios.put(`http://127.0.0.1:3000/servicios/66646fbd2aa9bfa6192760a4`, { disponible: true }, {
+      const responseServicio = await axios.put(`http://127.0.0.1:3000/servicios/${disponibilizar._id}`, { disponible: true }, {
         headers: {
           authorization: 'Bearer ' + authToken
         }

@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Context from "../../../../context/context.jsx";
 
-function PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLoading }) {
+function PostDataDetail({ servicio, usuario, fetchUsuario, setIsSuccess, setReservaId, setIsLoading }) {
 
   const { authToken, msgError } = useContext(Context);
 
@@ -34,6 +34,7 @@ function PostDataDetail({ servicio, usuario, setIsSuccess, setReservaId, setIsLo
       }
     })
       .then(response => {
+        fetchUsuario();
         console.log('Respuesta:', response.data);
         setReservaId(response.data.reservaId);
         setIsSuccess(true);
