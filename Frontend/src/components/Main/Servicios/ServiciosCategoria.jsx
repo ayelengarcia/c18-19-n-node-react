@@ -12,12 +12,30 @@ const ServicioCategoria = () => {
 
   const servicios = serviciosFiltrados.filter(servicio => servicio.categoria.toLowerCase() === categoria.toLowerCase());
 
+  let content;
+  switch (categoria) {
+    case 'oficinas':
+      content = <div className={`${styles.banner_categoria} ${styles.banner_oficinas}`}>
+      </div>;
+      break;
+    case 'salas':
+      content = <div className={`${styles.banner_categoria} ${styles.banner_salas}`}>
+      </div>;
+      break;
+    case 'eventos':
+      content = <div className={`${styles.banner_categoria} ${styles.banner_eventos}`}>
+      </div>;
+      break;
+    default:
+      content = <div className={`${styles.banner_categoria} ${styles.banner_oficinas}`}>
+      </div>;
+      break;
+  }
+
   return (
     <div className={styles.container}>
 
-      <div className={styles.banner_categoria}>
-        <h2 className={styles.title_categoria}>{categoria.toUpperCase()}</h2>
-      </div>
+      {content}
 
       <ul className={styles.container_ul}>
         <NavLink
